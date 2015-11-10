@@ -1,0 +1,12 @@
+%div.panel.panel-default
+  %div.panel-heading
+    %h1= t('admin.resource.edit.title', inflections)
+
+  %div.panel-body
+    = simple_form_for(@resource, url: resource_path(@resource)) do |f|
+      = render 'form', form: f
+      = f.button :submit, class: 'btn btn-primary'
+
+  %div.panel-footer
+    = link_to 'Show', resource_path(@resource), class: 'btn btn-default'
+    = link_to 'Back', collection_path, class: 'btn btn-default'

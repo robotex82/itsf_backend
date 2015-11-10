@@ -9,17 +9,20 @@ Gem::Specification.new do |s|
   s.version     = Itsf::Backend::VERSION
   s.authors     = ["Roberto Vasquez Angel"]
   s.email       = ["roberto@vasquez-angel.de"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Itsf::Backend."
-  s.description = "TODO: Description of Itsf::Backend."
+  s.homepage    = "https://github.com/robotex82/itsf_backend"
+  s.summary     = "ITSF Backend Module."
+  s.description = "Painless Rails Admin UI."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.2.4"
+  s.add_dependency 'admino'
   s.add_dependency 'kaminari'
   s.add_dependency 'bootstrap-kaminari-views'
+  s.add_dependency 'responders'
+  s.add_dependency 'simple_form'
 
   s.add_development_dependency 'rails-dummy'
   s.add_development_dependency 'rspec-rails'

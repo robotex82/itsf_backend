@@ -1,0 +1,17 @@
+%div.panel.panel-default
+  %div.panel-heading
+    %h1= t('admin.resource.new.title', inflections)
+
+  %div.panel-body
+    = simple_form_for(@resource, url: collection_path) do |f|
+      - if @resource.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@resource.errors.count, "error")} prohibited this #{@resource.model_name.human(count: :one)} from being saved:"
+          %ul
+            - @resource.errors.full_messages.each do |msg|
+              %li= msg
+      = render 'form', form: f
+      = f.button :submit, class: 'btn btn-primary'
+
+  %div.panel-footer
+    = link_to 'Back', collection_path, class: 'btn btn-default'

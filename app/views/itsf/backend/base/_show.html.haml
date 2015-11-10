@@ -1,0 +1,5 @@
+- resource_class.attribute_names.each do |name|
+  %p
+    %b
+      = name.humanize
+    = resource.send(name)

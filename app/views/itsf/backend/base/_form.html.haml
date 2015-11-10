@@ -1,0 +1,2 @@
+- resource_class.attribute_names.reject { |n| %w(id created_at updated_at).include? n }.each do |name|
+  = form.input name

@@ -3,6 +3,8 @@ en:
     backend:
       base:
         edit:
+          back: "Back"
+          show: "Show"
           title: "Edit %{resource_name}"
         index:
           new: "Add %{resource_name}"

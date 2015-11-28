@@ -2,7 +2,7 @@
   %div.panel-heading
     %h1
       = t('.title', inflections)
-      = link_to t('.new', inflections), new_resource_path, class: 'btn btn-primary pull-right'
+      = link_to t('.new', inflections), new_resource_path, class: 'btn btn-success pull-right'
 
   %div.table-responsive
     = table_for(@collection, class: resource_class, presenter: BootstrapTablePresenter) do |table, record|

@@ -1,0 +1,20 @@
+de:
+  itsf:
+    backend:
+      base:
+        edit:
+          title: "%{resource_name} bearbeiten"
+        index:
+          new: "%{resource_name} hinzufügen"
+          title: "%{resources_name}"
+        new:
+          back: "Zurück"
+          title: "%{resource_name}"
+        show:
+          back: "Zurück"
+          edit: "Bearbeiten"
+  layouts:
+    itsf:
+      backend:
+        base:
+          title: "Backend"

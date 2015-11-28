@@ -1,5 +1,6 @@
 - resource_class.attribute_names.each do |name|
   %p
-    %b
-      = name.humanize
-    = resource.send(name)
+    %span
+      %b= name.humanize
+    %span
+      = resource.send(name)

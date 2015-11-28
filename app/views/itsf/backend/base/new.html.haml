@@ -1,6 +1,6 @@
 %div.panel.panel-default
   %div.panel-heading
-    %h1= t('admin.resource.new.title', inflections)
+    %h1= t('.title', inflections)
 
   %div.panel-body
     = simple_form_for(@resource, url: collection_path) do |f|
@@ -14,4 +14,4 @@
       = f.button :submit, class: 'btn btn-primary'
 
   %div.panel-footer
-    = link_to 'Back', collection_path, class: 'btn btn-default'
+    = link_to t('.back'), collection_path, class: 'btn btn-default'

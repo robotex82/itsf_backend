@@ -1,0 +1,20 @@
+en:
+  itsf:
+    backend:
+      base:
+        edit:
+          title: "Edit %{resource_name}"
+        index:
+          new: "Add %{resource_name}"
+          title: "%{resources_name}"
+        new:
+          back: "Back"
+          title: "%{resource_name}"
+        show:
+          back: "Back"
+          edit: "Edit"
+  layouts:
+    itsf:
+      backend:
+        base:
+          title: "Backend"

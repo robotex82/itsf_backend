@@ -1,8 +1,8 @@
 %div.panel.panel-default
   %div.panel-heading
     %h1
-      = t('admin.resource.index.title', inflections)
-      = link_to t('admin.resource.index.actions.new', inflections), new_resource_path, class: 'btn btn-primary pull-right'
+      = t('.title', inflections)
+      = link_to t('.new', inflections), new_resource_path, class: 'btn btn-primary pull-right'
 
   %div.table-responsive
     = table_for(@collection, class: resource_class, presenter: BootstrapTablePresenter) do |table, record|

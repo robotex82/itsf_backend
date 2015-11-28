@@ -9,5 +9,5 @@
 
   %div.panel-footer
     %div.btn-group
-      = link_to 'Edit', edit_resource_path(@resource), class: 'btn btn-default'
-      = link_to 'Back', collection_path, class: 'btn btn-default'
+      = link_to t('.edit'), edit_resource_path(@resource), class: 'btn btn-primary'
+      = link_to t('.back'), collection_path, class: 'btn btn-default'

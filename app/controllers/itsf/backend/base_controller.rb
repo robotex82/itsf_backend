@@ -7,7 +7,7 @@ module Itsf::Backend
     prepend_view_path Rails.root.join(*%w(admin views))
 
     helper_method :resource_class
-
+    
     private
 
     def resource_class

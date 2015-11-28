@@ -1,6 +1,6 @@
 module Itsf
   module Backend
-    class ApplicationController < ActionController::Base
+    class ApplicationController < Configuration.base_controller.constantize
     end
   end
 end

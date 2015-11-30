@@ -8,6 +8,10 @@ module Itsf
         yield self
       end
 
+      mattr_accessor :backend_engines do
+        []
+      end
+
       mattr_accessor :base_controller do
         'ApplicationController'
       end

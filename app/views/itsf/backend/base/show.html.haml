@@ -2,7 +2,7 @@
 
 %div.panel.panel-default
   %div.panel-heading
-    %h1= @resource.to_s
+    %h1= @resource.respond_to?(:human) ? @resource.human : @resource
 
   %div.panel-body
     = render 'show', resource: @resource, resource_class: resource_class

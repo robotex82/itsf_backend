@@ -8,7 +8,7 @@ en:
           title: "Edit %{resource_name}"
         index:
           new: "Add %{resource_name}"
-          title: "%{resources_name}"
+          title: "%{collection_name}"
         new:
           back: "Back"
           title: "%{resource_name}"

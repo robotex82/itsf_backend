@@ -9,8 +9,8 @@ module ResourceInflectionsConcern
 
   def inflections
     {
-      resource_name: resource_class.model_name.human(count: :one),
-      resources_name: resource_class.model_name.human(count: :other)
+      resource_name: resource_class.model_name.human(count: 1),
+      collection_name: resource_class.model_name.human(count: 2)
     }
   end
 end

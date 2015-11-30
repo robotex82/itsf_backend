@@ -8,10 +8,10 @@ de:
           title: "%{resource_name} bearbeiten"
         index:
           new: "%{resource_name} hinzufügen"
-          title: "%{resources_name}"
+          title: "%{collection_name}"
         new:
           back: "Zurück"
-          title: "%{resource_name}"
+          title: "%{resource_name} erstellen"
         show:
           back: "Zurück"
           edit: "Bearbeiten"

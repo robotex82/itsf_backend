@@ -20,3 +20,9 @@ en:
       backend:
         base:
           title: "Backend"
+  table:
+    actions:
+      destroy: "Destroy"
+      edit: "Edit"
+      show: "Show"
+      title: "Actions"

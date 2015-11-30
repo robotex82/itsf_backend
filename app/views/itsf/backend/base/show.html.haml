@@ -8,6 +8,7 @@
     = render 'show', resource: @resource, resource_class: resource_class
 
   %div.panel-footer
-    %div.btn-group
-      = link_to t('.edit'), edit_resource_path(@resource), class: 'btn btn-primary'
-      = link_to t('.back'), collection_path, class: 'btn btn-default'
+    = link_to t('.edit'), edit_resource_path(@resource), class: 'btn btn-primary'
+    = link_to collection_path, class: 'btn btn-default pull-right' do
+      %span.glyphicon.glyphicon-arrow-left
+      = t('.back')

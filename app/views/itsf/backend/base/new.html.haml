@@ -14,4 +14,7 @@
       = f.button :submit, class: 'btn btn-success'
 
   %div.panel-footer
-    = link_to t('.back'), collection_path, class: 'btn btn-default'
+    .btn-container-right
+      = link_to collection_path, class: 'btn btn-default' do
+        %span.glyphicon.glyphicon-arrow-left
+        = t('.back')

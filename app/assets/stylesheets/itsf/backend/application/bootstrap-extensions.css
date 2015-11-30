@@ -1,0 +1,7 @@
+.btn-container-right {
+  direction: rtl;
+}
+
+.btn-container-right * {
+  direction: ltr;
+}

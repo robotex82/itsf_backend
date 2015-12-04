@@ -35,6 +35,7 @@ de:
           title: "%{resource_name} erstellen"
         show:
           back: "Zurück"
+          destroy: "Löschen"
           edit: "Bearbeiten"
       home:
         index:

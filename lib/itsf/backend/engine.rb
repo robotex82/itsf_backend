@@ -10,7 +10,7 @@ module Itsf
         g.helper false
       end
 
-      config.paths.add root.join(*%w(app tables concerns)).to_s, eager_load: true
+      config.paths.add root.join(*%w(app extensions concerns)).to_s, eager_load: true
     end
   end
 end

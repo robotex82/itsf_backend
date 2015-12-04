@@ -1,13 +1,16 @@
 %p#notice= notice
 
-%div.panel.panel-default
-  %div.panel-heading
-    %h1= @resource.respond_to?(:human) ? @resource.human : @resource
+.panel.panel-default.panel-with-actions
+  .panel-heading
+    .panel-title
+      %h1= @resource.try_all(:human, :name, :to_s)
+    .panel-actions
+      = link_to(t('.destroy'), resource_path(@resource), method: :delete, class: 'btn btn-danger', 'data-confirm': I18n.t('confirmations.delete'))
 
-  %div.panel-body
+  %table.table.table-striped.table-condensed.table-hover
     = render 'show', resource: @resource, resource_class: resource_class
 
-  %div.panel-footer
+  .panel-footer
     = link_to t('.edit'), edit_resource_path(@resource), class: 'btn btn-primary'
     = link_to collection_path, class: 'btn btn-default pull-right' do
       %span.glyphicon.glyphicon-arrow-left

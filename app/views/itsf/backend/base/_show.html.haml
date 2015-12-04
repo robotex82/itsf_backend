@@ -1,6 +1,4 @@
 - resource_class.attribute_names.each do |name|
-  %p
-    %span
-      %b= name.humanize
-    %span
-      = resource.send(name)
+  %tr
+    %th{ role: name.dasherize, class: 'key' }= resource_class.human_attribute_name(name)
+    %td{ role: name.dasherize, class: 'value' }= resource.send(name)

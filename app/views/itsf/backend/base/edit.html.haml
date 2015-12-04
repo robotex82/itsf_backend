@@ -1,13 +1,13 @@
-%div.panel.panel-default
-  %div.panel-heading
+.panel.panel-default
+  .panel-heading
     %h1= t('.title', inflections)
 
-  %div.panel-body
+  .panel-body
     = simple_form_for(@resource, url: resource_path(@resource)) do |f|
       = render 'form', form: f
       = f.button :submit, class: 'btn btn-success'
 
-  %div.panel-footer
+  .panel-footer
     = link_to t('.show'), resource_path(@resource), class: 'btn btn-primary'
     = link_to collection_path, class: 'btn btn-default pull-right' do
       %span.glyphicon.glyphicon-arrow-left

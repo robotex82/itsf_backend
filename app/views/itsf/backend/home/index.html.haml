@@ -1,1 +1,3 @@
 %h1= t('.title', engine_name: t(controller.class.name.deconstantize.underscore.gsub('/', '_')))
+
+.col-lg-12= render 'dashboard_panel', engine: engine

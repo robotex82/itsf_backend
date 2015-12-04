@@ -1,0 +1,17 @@
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      = t(engine.engine_name)
+
+  %table.table.table-striped.table-hover.table-condensed
+    - "#{engine.to_s.deconstantize}::Configuration".constantize.base_controller_descendants.each do |kontroller|
+      %tr
+        %th.col-md-3= kontroller.resource_class.model_name.human(count: :other)
+        %td.text-left
+          %span.label.label-default= kontroller.resource_class.count
+        %td.text-right= link_to(t('.view'), { controller: kontroller.name.underscore.gsub('_controller', '') }, class: 'btn btn-primary btn-xs')
+
+  .panel-footer.text-right
+    = link_to(main_app.itsf_backend_path, class: 'btn btn-default') do
+      %span.glyphicon.glyphicon-arrow-left
+      = t('.back')

@@ -10,6 +10,25 @@ class BootstrapTablePresenter < Admino::Table::Presenter
   end
 
   class ResourceRow < Admino::Table::ResourceRow
+    def to_html
+      buffer = @columns
+
+      if @actions.any?
+        html_options = column_html_options(:actions)
+        buffer << h.content_tag(:td, html_options) do
+          actions_wrapper do
+            @actions.join(" ").html_safe
+          end
+        end
+      end
+
+      buffer.html_safe
+    end
+
+    def actions_wrapper(&block)
+      h.content_tag(:div, { class: 'btn-group' }, &block)
+    end
+
     def edit_action_url
       view_context.edit_resource_url(resource)
     end
@@ -19,19 +38,19 @@ class BootstrapTablePresenter < Admino::Table::Presenter
     end
 
     def show_action_html_options
-      { class: 'btn btn-default btn-sm' }
+      { class: 'btn btn-default btn-xs' }
     end
 
     def edit_action_html_options
-      { class: 'btn btn-default btn-sm' }
+      { class: 'btn btn-default btn-xs' }
     end
 
     def destroy_action_html_options
       {
         method: :delete,
-        class: 'btn btn-danger btn-sm',
+        class: 'btn btn-danger btn-xs',
         data: {
-          confirm: 'Are you sure?'
+          confirm: I18n.t('confirmations.delete')
         }
       }
     end

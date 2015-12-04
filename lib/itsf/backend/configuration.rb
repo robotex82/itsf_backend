@@ -15,6 +15,10 @@ module Itsf
       mattr_accessor :base_controller do
         'ApplicationController'
       end
+
+      mattr_accessor :title_link do
+        Proc.new { |view| view.link_to(view.t('.title'), '#', class: 'navbar-brand') }
+      end
     end
   end
 end

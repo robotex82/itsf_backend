@@ -8,10 +8,18 @@ module Itsf::Backend
 
     helper_method :resource_class
     
-    private
+    def self.resource_class
+      name.gsub('Controller', '').constantize
+    end
 
+    # private
+
+    # def resource_class
+    #   controller_name.classify.constantize
+    # end
+    
     def resource_class
-      controller_name.classify.constantize
+      self.class.resource_class
     end
   end
 end

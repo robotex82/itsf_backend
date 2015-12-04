@@ -9,6 +9,8 @@ module Itsf
         g.assets false
         g.helper false
       end
+
+      config.paths.add root.join(*%w(app tables concerns)).to_s, eager_load: true
     end
   end
 end

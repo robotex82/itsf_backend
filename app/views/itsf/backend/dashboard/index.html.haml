@@ -1,0 +1,4 @@
+%h1= t('.title', engine_name: t(controller.class.name.deconstantize.underscore.gsub('/', '_')))
+
+- Itsf::Backend::Configuration.backend_engines.each do |engine|
+  = render 'dashboard_panel', engine: engine

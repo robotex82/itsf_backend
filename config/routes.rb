@@ -1,3 +1,3 @@
 Itsf::Backend::Engine.routes.draw do
-  root to: 'home#index'
+  root to: 'dashboard#index'
 end

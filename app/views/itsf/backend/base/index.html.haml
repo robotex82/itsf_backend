@@ -1,19 +1,25 @@
-%div.panel.panel-default
-  %div.panel-heading
-    %h1
-      = t('.title', inflections)
-      = link_to new_resource_path, class: 'btn btn-success pull-right' do
-        %span.glyphicon.glyphicon-plus
-        = t('.new', inflections)
+%div.panel.panel-default.panel-with-actions
+  .panel-heading.table-style
+    .panel-title
+      %h3
+        = t('.title', inflections)
+        %span.label.label-default= @collection.total_count
+    .panel-actions
+      .btn-group
+        = link_to new_resource_path, class: 'btn btn-success' do
+          %span.glyphicon.glyphicon-plus
+          = t('.new', inflections)
+      
 
   %div.table-responsive
     = table_for(@collection, class: resource_class, presenter: BootstrapTablePresenter) do |table, record|
       = render 'table', table: table, resource_class: resource_class
 
       = table.actions do
-        = table.action :show, resource_path(record)
-        = table.action :edit, edit_resource_path(record)
-        = table.action :destroy, resource_path(record), method: :delete
+        .btn-group
+          = table.action :show, resource_path(record)
+          = table.action :edit, edit_resource_path(record)
+          = table.action :destroy, resource_path(record), method: :delete
 
-  %div.panel-footer
+  %div.panel-footer.text-center
     = paginate @collection, theme: 'twitter-bootstrap-3'

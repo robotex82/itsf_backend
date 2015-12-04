@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.2.4"
+  s.add_dependency 'ace-rails-ap'
   s.add_dependency 'admino'
   s.add_dependency 'kaminari'
   s.add_dependency 'bootstrap-kaminari-views'

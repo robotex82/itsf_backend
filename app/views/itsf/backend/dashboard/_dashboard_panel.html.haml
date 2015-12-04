@@ -1,0 +1,14 @@
+.col-lg-6
+  .panel.panel-default.panel-with-actions
+    .panel-heading
+      .panel-title
+        = t(engine.engine_name)
+      .panel-actions
+        = link_to(t('.view'), main_app.send("#{engine.engine_name}_path"), class: 'btn btn-primary btn-xs')
+    .panel-body
+    %table.table.table-striped.table-hover.table-condensed
+      - "#{engine.to_s.deconstantize}::Configuration".constantize.base_controller_descendants.each do |kontroller|
+        %tr
+          %th.col-md-3= kontroller.resource_class.model_name.human(count: :other)
+          %td.text-left
+            %span.label.label-default= kontroller.resource_class.count

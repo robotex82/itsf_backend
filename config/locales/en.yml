@@ -1,4 +1,9 @@
 en:
+  booleans:
+    'true': Yes
+    'false': No
+  confirmations:
+    delete: "Are you sure?"
   itsf:
     backend:
       base:

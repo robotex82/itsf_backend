@@ -1,3 +1,4 @@
+require 'ace-rails-ap'
 require 'admino'
 require 'kaminari'
 require 'bootstrap-kaminari-views'

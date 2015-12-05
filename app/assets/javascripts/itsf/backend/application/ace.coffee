@@ -24,3 +24,28 @@ $ ->
       $(textarea).val(editor.getValue())
     )
     
+$ ->
+  $('pre[data-add-editor]').each ->
+    container = @
+
+    # Create css id based on the container id
+    div_id = "editor_for_#{$(container).attr('id')}"
+
+    # Add editor div
+    $(container).after("<div id=\"#{div_id}\" class=\"editor\">#{$(container).html()}</div>")
+
+    # Hide container
+    $(container).css('display', 'none');
+
+    # Add editor
+    editor = ace.edit("#{div_id}")
+
+    # editor.setValue($(container).html())
+
+    # Set syntax highlighting
+    if $(container).is('[data-editor-syntax]')
+      syntax = $(container).attr('data-editor-syntax')
+      editor.session.setMode("ace/mode/#{syntax}");
+
+    # Set the editor to read-only
+    editor.setReadOnly(true)

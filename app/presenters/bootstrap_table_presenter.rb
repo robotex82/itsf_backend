@@ -36,13 +36,17 @@ class BootstrapTablePresenter < Admino::Table::Presenter
       #   label = query.sorting.scope_link(sorting_scope, label, sorting_html_options)
       # end
 
-      html_options.reverse_merge!(sorting: true, sorting_options: [])
-      sorting = html_options.delete(:sorting)
-      sorting_options = html_options.delete(:sorting_options)
-      sorting_options << attribute_name if sorting_options.empty?
+      html_options.reverse_merge!(sortable: true, sortable_options: [])
+      sortable = html_options.delete(:sortable)
+      sortable_options = html_options.delete(:sortable_options)
+      if sortable_options.empty?
+        sortable_options << attribute_name
+        sortable_options << resource_klass.human_attribute_name(attribute_name) 
+      end
 
-      if sorting
-        label = h.sort_link(h.instance_variable_get("@q"), *sorting_options)
+
+      if sortable
+        label = h.sort_link(h.instance_variable_get("@q"), *sortable_options)
         # label = h.sort_link(h.instance_variable_get("@q"), attribute_name)
       else
         label = label.to_s

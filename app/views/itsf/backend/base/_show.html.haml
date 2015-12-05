@@ -1,4 +1,4 @@
 - resource_class.attribute_names.each do |name|
   %tr
-    %th{ role: name.dasherize, class: 'key' }= resource_class.human_attribute_name(name)
-    %td{ role: name.dasherize, class: 'value' }= resource.send(name)
+    %th.key.col-md-2{ role: name.dasherize }= resource_class.human_attribute_name(name)
+    %td.value.col-md-10{ role: name.dasherize }= resource.send(name)

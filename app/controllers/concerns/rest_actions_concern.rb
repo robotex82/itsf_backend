@@ -7,7 +7,9 @@ module RestActionsConcern
   end
 
   def index
-    @collection = resource_class.page(params[:page]).per(10)
+    @q = collection_scope.ransack(params[:q])
+    @collection = @q.result.page(params[:page]).per(10)
+
     respond_with @collection
   end
 
@@ -42,5 +44,11 @@ module RestActionsConcern
     @resource = resource_class.find(params[:id])
     @resource.destroy
     respond_with @resource, location: collection_path
+  end
+
+  private
+
+  def collection_scope
+    resource_class
   end
 end

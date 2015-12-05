@@ -16,6 +16,17 @@ module Itsf
         'ApplicationController'
       end
 
+      mattr_accessor :engine_mount_point do
+        Proc.new { |router, engine|
+          router.mount(
+            engine => I18n.t(
+              "routes.mount.#{engine.engine_name}",
+              default: "/#{engine.name.deconstantize.underscore}"
+            )
+          )
+        }
+      end
+
       mattr_accessor :title_link do
         Proc.new { |view| view.link_to(view.t('.title'), '#', class: 'navbar-brand') }
       end

@@ -2,7 +2,7 @@ module Itsf
   module Backend
     module Generators
       class ResourceGenerator < Rails::Generators::NamedBase
-        desc 'Generates an admin reource'
+        desc 'Generates an admin resource'
 
         source_root File.expand_path('../templates', __FILE__)
 
@@ -40,15 +40,13 @@ module Itsf
           p admin_controller_file_name
           p controller_base_path
           p controller_name
+          p params_key
         end
 
 
 
         def generate_controller
           template "controller.rb", File.join(admin_controller_file_path, admin_controller_file_name)
-        end
-
-        def generate_route
         end
 
         private
@@ -75,6 +73,10 @@ module Itsf
 
         def module_namespace
           class_path.join('/').camelize
+        end
+
+        def params_key
+          singular_table_name
         end
       end
     end

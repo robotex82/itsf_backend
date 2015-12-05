@@ -5,8 +5,51 @@ class BootstrapTablePresenter < Admino::Table::Presenter
     { class: 'table table-striped table-hover table-admino table-scrollable table-condensed' }
   end
 
+  def head_row(collection_klass, query, view_context)
+    HeadRow.new(collection_klass, query, view_context)
+  end
+
   def resource_row(resource, view_context)
     ResourceRow.new(resource, view_context)
+  end
+
+  class HeadRow < Admino::Table::HeadRow
+    def column(*args, &block)
+      attribute_name, label, html_options = parse_column_args(args)
+
+      if label.nil?
+        label = column_label(attribute_name)
+      elsif label.is_a? Symbol
+        label = column_label(label)
+      end
+
+      html_options = complete_column_html_options(
+        attribute_name,
+        html_options
+      )
+
+      # sorting_scope = html_options.delete(:sorting)
+      # sorting_html_options = html_options.delete(:sorting_html_options) { {} }
+
+      # if sorting_scope
+      #   raise ArgumentError, 'query object is required' unless query
+      #   label = query.sorting.scope_link(sorting_scope, label, sorting_html_options)
+      # end
+
+      html_options.reverse_merge!(sorting: true, sorting_options: [])
+      sorting = html_options.delete(:sorting)
+      sorting_options = html_options.delete(:sorting_options)
+      sorting_options << attribute_name if sorting_options.empty?
+
+      if sorting
+        label = h.sort_link(h.instance_variable_get("@q"), *sorting_options)
+        # label = h.sort_link(h.instance_variable_get("@q"), attribute_name)
+      else
+        label = label.to_s
+      end
+
+      @columns << h.content_tag(:th, label, html_options)
+    end
   end
 
   class ResourceRow < Admino::Table::ResourceRow

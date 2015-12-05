@@ -3,7 +3,7 @@
 .panel.panel-default.panel-with-actions
   .panel-heading
     .panel-title
-      %h1= @resource.try_all(:human, :name, :to_s)
+      %h3= @resource.try_all(:human, :name, :to_s)
     .panel-actions
       = link_to(t('.destroy'), resource_path(@resource), method: :delete, class: 'btn btn-danger', 'data-confirm': I18n.t('confirmations.delete'))
 

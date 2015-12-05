@@ -28,6 +28,7 @@ de:
           show: "Anzeigen"
           title: "%{resource_name} bearbeiten"
         index:
+          back: "Zurück"
           new: "%{resource_name} hinzufügen"
           title: "%{collection_name}"
         new:
@@ -53,6 +54,9 @@ de:
       backend:
         base:
           title: "%{application_name}"
+  routes:
+    mount:
+      itsf_backend: '/backend'
   table:
     actions:
       destroy: "Löschen"

@@ -44,7 +44,7 @@ module RansackFormBuilderExtensions
     t.content_tag(:div, class: 'checkbox btn btn-default btn-xs') do
       t.content_tag(:label) do
         t.check_box_tag("q[scopes][#{scope_name}]", "1", value) +
-        scope_name
+        t.t("activerecord.scopes.#{scope_name}")
       end
     end
   end

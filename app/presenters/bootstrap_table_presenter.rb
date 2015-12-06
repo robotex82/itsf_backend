@@ -73,7 +73,7 @@ class BootstrapTablePresenter < Admino::Table::Presenter
     end
 
     def actions_wrapper(&block)
-      h.content_tag(:div, { class: 'btn-group' }, &block)
+      h.content_tag(:div, { class: 'btn-group pull-right' }, &block)
     end
 
     def edit_action_url

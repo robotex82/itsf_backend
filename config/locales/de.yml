@@ -1,4 +1,9 @@
 de:
+  activerecord:
+    scopes:
+      all: Alle
+      published: Veröffentlicht
+      unpublished: Unveröffentlicht
   booleans:
     'true': Ja
     'false': Nein

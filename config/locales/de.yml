@@ -57,6 +57,10 @@ de:
   routes:
     mount:
       itsf_backend: '/backend'
+  simple_form:
+    labels:
+      q:
+        locale_eq: Sprache gleicht
   table:
     actions:
       destroy: "Löschen"

@@ -1,3 +1,9 @@
+/ .panel.panel-default.panel-search
+/   .panel-body
+/     = search_form_for(@q, url: collection_path) do |f|
+/       = render 'search', form: f
+/       = f.button t('ransack.search'), class: 'btn btn-success'
+
 .panel.panel-default.panel-with-actions
   .panel-heading.table-style
     .panel-title
@@ -9,7 +15,13 @@
         = link_to new_resource_path, class: 'btn btn-success' do
           %span.glyphicon.glyphicon-plus
           = t('.new', inflections)
-      
+
+  .panel-body
+    = search_form_for(@q, url: collection_path, class: 'form-inline', html: { 'data-auto-submit': true }) do |f|
+      = render 'scopes', form: f
+      = render 'search', form: f
+
+      = f.button :submit, t('ransack.search'), class: 'btn btn-success'
 
   .table-responsive
     = table_for(@collection, class: resource_class, presenter: BootstrapTablePresenter) do |table, record|

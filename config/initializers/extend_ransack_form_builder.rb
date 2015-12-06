@@ -1,0 +1,1 @@
+Ransack::Helpers::FormBuilder.send(:include, RansackFormBuilderExtensions)

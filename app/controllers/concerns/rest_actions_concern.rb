@@ -7,7 +7,7 @@ module RestActionsConcern
   end
 
   def index
-    @q = collection_scope.ransack(params[:q])
+    @q = collection_scope_with_search_scopes.ransack(params[:q])
     @collection = @q.result.page(params[:page]).per(10)
 
     respond_with @collection
@@ -48,7 +48,20 @@ module RestActionsConcern
 
   private
 
+  def collection_scope_with_search_scopes
+    final_scope = collection_scope
+    search_scopes.each do |scope|
+      final_scope = final_scope.send(scope)
+    end
+    final_scope
+  end
+
   def collection_scope
     resource_class
+  end
+
+  def search_scopes
+    return [] unless params.has_key?(:q) && params[:q].has_key?(:scopes)
+    params[:q][:scopes].keys - ['unscoped']
   end
 end

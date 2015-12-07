@@ -15,6 +15,7 @@ module Itsf
       mattr_accessor :engine_mount_point
       mattr_accessor :title_link
       mattr_accessor :resource_title_methods
+      mattr_accessor :disabled_features
 
       # mattr_accessor :backend_engines do
       #   []

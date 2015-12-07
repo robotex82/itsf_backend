@@ -1,1 +1,1 @@
-Ransack::Helpers::FormBuilder.send(:include, RansackFormBuilderExtensions) if Itsf::Backend.features?(:ransack)
+Ransack::Helpers::FormBuilder.send(:include, RansackFormBuilderExtensions) if Itsf::Backend.gem_available?(:ransack)

@@ -1,4 +1,10 @@
 Itsf::Backend.configure do |config|
+  # Manually disable features
+  # 
+  # Default: config.disabled_features: []
+  # 
+  config.disabled_features = []
+  
   # Set the base controller the backend dashboards
   #
   # Default: config.dashboard_base_controller = 'BackendController'

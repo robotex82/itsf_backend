@@ -1,5 +1,5 @@
 module Itsf::Backend
-  class HomeController < ApplicationController
+  class HomeController < Configuration.home_base_controller.constantize
     layout 'itsf/backend/base'
 
     helper_method :engine

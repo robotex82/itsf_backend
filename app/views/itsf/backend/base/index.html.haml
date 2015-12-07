@@ -6,7 +6,7 @@
         %span.label.label-default= @collection.total_count
     .panel-actions
       .btn-group
-        = link_to new_resource_path, id: "link-to-new-#{resource_class.name.underscore.gsub('/', '-')}", class: 'btn btn-success btn-responsive' do
+        = link_to new_resource_path, id: "link-to-#{controller.class.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-new", class: 'btn btn-success btn-responsive' do
           %span.glyphicon.glyphicon-plus
           %span.btn-text= t('.new', inflections)
 
@@ -27,9 +27,9 @@
 
       = table.actions do
         .btn-group
-          = table.action :show, resource_path(record), id: "link-to-show-#{resource_class.name.underscore.gsub('/', '_')}-#{record.to_param}"
-          = table.action :edit, edit_resource_path(record), id: "link-to-edit-#{resource_class.name.underscore.gsub('/', '_')}-#{record.to_param}"
-          = table.action :destroy, resource_path(record), method: :delete, id: "link-to-destroy-#{resource_class.name.underscore.gsub('/', '_')}-#{record.to_param}"
+          = table.action :show, resource_path(record), id: "link-to-#{controller.class.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-#{record.to_param}-show"
+          = table.action :edit, edit_resource_path(record), id: "link-to-#{controller.class.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-#{record.to_param}-edit"
+          = table.action :destroy, resource_path(record), method: :delete, id: "link-to-#{controller.class.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-#{record.to_param}-destroy"
 
   .panel-footer
     .row

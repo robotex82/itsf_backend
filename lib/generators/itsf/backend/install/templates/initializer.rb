@@ -1,9 +1,21 @@
 Itsf::Backend.configure do |config|
-  # Set the base controller
+  # Set the base controller the backend dashboards
   #
-  # Default: config.base_controller = 'BackendController'
+  # Default: config.dashboard_base_controller = 'BackendController'
   #
-  config.base_controller = 'BackendController'
+  config.dashboard_base_controller = 'BackendController'
+
+  # Set the base controller for module home controllers
+  #
+  # Default: config.home_base_controller = 'BackendController'
+  #
+  config.home_base_controller = 'BackendController'
+
+  # Set the base controller for resouce controllers
+  #
+  # Default: config.resource_base_controller = 'BackendController'
+  #
+  config.resource_base_controller = 'BackendController'
 
   # Register backend engines here. They will be  added to the backend menu
   # 

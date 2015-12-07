@@ -2,13 +2,21 @@ PATH
   remote: .
   specs:
     itsf_backend (0.0.1)
+      ace-rails-ap
+      admino
       bootstrap-kaminari-views
+      haml-rails
       kaminari
+      less-rails
       rails (~> 4.2.4)
+      responders
+      simple_form
+      twitter-bootstrap-rails
 
 GEM
   remote: https://rubygems.org/
   specs:
+    ace-rails-ap (4.0.1)
     actionmailer (4.2.4)
       actionpack (= 4.2.4)
       actionview (= 4.2.4)
@@ -44,6 +52,11 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    admino (0.0.15)
+      activemodel
+      activesupport
+      coercible
+      showcase (~> 0.2.5)
     arel (6.0.3)
     bootstrap-kaminari-views (0.0.5)
       kaminari (>= 0.13)
@@ -56,8 +69,14 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     coderay (1.1.0)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
+    commonjs (0.2.7)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
     erubis (2.7.0)
+    execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
@@ -88,11 +107,31 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    haml (4.0.7)
+      tilt
+    haml-rails (0.9.0)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      haml (>= 4.0.6, < 5.0)
+      html2haml (>= 1.0.1)
+      railties (>= 4.0.1)
+    html2haml (2.0.0)
+      erubis (~> 2.7.0)
+      haml (~> 4.0.0)
+      nokogiri (~> 1.6.0)
+      ruby_parser (~> 3.5)
     i18n (0.7.0)
     json (1.8.3)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    less (2.6.0)
+      commonjs (~> 0.2.7)
+    less-rails (2.7.0)
+      actionpack (>= 4.0)
+      less (~> 2.6.0)
+      sprockets (> 2, < 4)
+      tilt
     listen (3.0.3)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -148,6 +187,8 @@ GEM
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     rspec (3.3.0)
       rspec-core (~> 3.3.0)
       rspec-expectations (~> 3.3.0)
@@ -169,9 +210,17 @@ GEM
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
+    ruby_parser (3.7.2)
+      sexp_processor (~> 4.1)
+    sexp_processor (4.6.0)
     shellany (0.0.1)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
+    showcase (0.2.5)
+      activesupport
+    simple_form (3.2.0)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     slop (3.6.0)
     sprockets (3.4.0)
       rack (> 1, < 3)
@@ -182,6 +231,12 @@ GEM
     sqlite3 (1.3.11)
     thor (0.19.1)
     thread_safe (0.3.5)
+    tilt (2.0.1)
+    twitter-bootstrap-rails (3.2.2)
+      actionpack (>= 3.1)
+      execjs (>= 2.2.2, >= 2.2)
+      less-rails (>= 2.5.0)
+      railties (>= 3.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     xpath (2.0.0)
@@ -202,3 +257,6 @@ DEPENDENCIES
   rspec-rails
   shoulda-matchers (~> 2.8.0)
   sqlite3
+
+BUNDLED WITH
+   1.10.6

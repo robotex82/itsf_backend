@@ -29,6 +29,8 @@
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
             = render 'layouts/itsf/backend/main_navigation'
+          %ul.nav.navbar-nav.pull-right
+            = render_user_navigation(dropdown: true)
 
     .container-fluid
       .row

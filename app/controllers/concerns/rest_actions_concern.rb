@@ -7,8 +7,12 @@ module RestActionsConcern
   end
 
   def index
-    @q = collection_scope_with_search_scopes.ransack(params[:q])
-    @collection = @q.result.page(params[:page]).per(10)
+    if Itsf::Backend.features?(:ransack)
+      @q = collection_scope_with_search_scopes.ransack(params[:q])
+      @collection = @q.result.page(params[:page]).per(10)
+    else
+      @collection = collection_scope.page(params[:page]).per(10)
+    end
 
     respond_with @collection
   end
@@ -25,23 +29,23 @@ module RestActionsConcern
   end
 
   def show
-    @resource = resource_class.find(params[:id])
+    @resource = load_resource
     respond_with @resource
   end
 
   def edit
-    @resource = resource_class.find(params[:id])
+    @resource = load_resource
     respond_with @resource
   end
 
   def update
-    @resource = resource_class.find(params[:id])
+    @resource = load_resource
     @resource.update_attributes(permitted_params)
     respond_with @resource, location: collection_path
   end
 
   def destroy
-    @resource = resource_class.find(params[:id])
+    @resource = load_resource
     @resource.destroy
     respond_with @resource, location: collection_path
   end
@@ -58,6 +62,10 @@ module RestActionsConcern
 
   def collection_scope
     resource_class
+  end
+
+  def load_resource
+    resource_class.find(params[:id])
   end
 
   def search_scopes

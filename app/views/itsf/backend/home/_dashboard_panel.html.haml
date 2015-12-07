@@ -9,9 +9,9 @@
         %th.col-md-3= kontroller.resource_class.model_name.human(count: :other)
         %td.text-left
           %span.label.label-default= kontroller.resource_class.count
-        %td.text-right= link_to(t('.view'), { controller: kontroller.name.underscore.gsub('_controller', '') }, class: 'btn btn-primary btn-xs')
+        %td.text-right= link_to(t('.view'), { controller: kontroller.name.underscore.gsub('_controller', '') }, id: kontroller.name.underscore.gsub('_controller', '').gsub('/', '-') ,class: 'btn btn-primary btn-xs')
 
   .panel-footer.text-right
-    = link_to(main_app.itsf_backend_path, class: 'btn btn-default') do
+    = link_to(main_app.itsf_backend_path, class: 'btn btn-default btn-responsive') do
       %span.glyphicon.glyphicon-arrow-left
-      = t('.back')
+      %span.btn-text= t('.back')

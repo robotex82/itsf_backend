@@ -1,3 +1,5 @@
+require 'erb'
+
 module Itsf
   module Backend
     module Generators
@@ -49,6 +51,10 @@ module Itsf
           template "controller.rb", File.join(admin_controller_file_path, admin_controller_file_name)
         end
 
+        def generate_routes
+          route ERB.new(routes_source).result(binding)
+        end
+
         private
 
         def admin_controller_file_path
@@ -77,6 +83,14 @@ module Itsf
 
         def params_key
           singular_table_name
+        end
+
+        def route_resource_name
+          plural_name
+        end
+
+        def routes_source
+          File.read(File.join(File.expand_path('../templates', __FILE__), 'routes.source'))
         end
       end
     end

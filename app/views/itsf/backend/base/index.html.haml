@@ -1,9 +1,3 @@
-/ .panel.panel-default.panel-search
-/   .panel-body
-/     = search_form_for(@q, url: collection_path) do |f|
-/       = render 'search', form: f
-/       = f.button t('ransack.search'), class: 'btn btn-success'
-
 .panel.panel-default.panel-with-actions
   .panel-heading.table-style
     .panel-title
@@ -12,16 +6,20 @@
         %span.label.label-default= @collection.total_count
     .panel-actions
       .btn-group
-        = link_to new_resource_path, class: 'btn btn-success' do
+        = link_to new_resource_path, id: "link-to-new-#{resource_class.name.underscore.gsub('/', '-')}", class: 'btn btn-success btn-responsive' do
           %span.glyphicon.glyphicon-plus
-          = t('.new', inflections)
+          %span.btn-text= t('.new', inflections)
 
   .panel-body
-    = search_form_for(@q, url: collection_path, class: 'form-inline', html: { 'data-auto-submit': true }) do |f|
-      = render 'scopes', form: f
-      = render 'search', form: f
-
-      = f.button :submit, t('ransack.search'), class: 'btn btn-success'
+    - if Itsf::Backend.features?(:ransack)
+      .filter
+        = search_form_for(@q, url: collection_path, class: 'form-inline', html: { 'data-auto-submit': true }) do |f|
+          .scopes.bottom-margin-1
+            = render 'scopes', form: f
+          .search.bottom-margin-1
+            = render 'search', form: f
+          .filter-actions
+            = f.button :submit, t('ransack.search'), class: 'btn btn-success'
 
   .table-responsive
     = table_for(@collection, class: resource_class, presenter: BootstrapTablePresenter) do |table, record|
@@ -29,9 +27,9 @@
 
       = table.actions do
         .btn-group
-          = table.action :show, resource_path(record)
-          = table.action :edit, edit_resource_path(record)
-          = table.action :destroy, resource_path(record), method: :delete
+          = table.action :show, resource_path(record), id: "link-to-show-#{resource_class.name.underscore.gsub('/', '_')}-#{record.to_param}"
+          = table.action :edit, edit_resource_path(record), id: "link-to-edit-#{resource_class.name.underscore.gsub('/', '_')}-#{record.to_param}"
+          = table.action :destroy, resource_path(record), method: :delete, id: "link-to-destroy-#{resource_class.name.underscore.gsub('/', '_')}-#{record.to_param}"
 
   .panel-footer
     .row
@@ -39,6 +37,6 @@
       .col-md-4
         .text-center= paginate @collection, theme: 'twitter-bootstrap-3'
       .col-md-4.btn-container-right
-        = link_to root_path, class: 'btn btn-default' do
+        = link_to root_path, class: 'btn btn-default btn-responsive' do
           %span.glyphicon.glyphicon-arrow-left
-          = t('.back')
+          %span.btn-text= t('.back')

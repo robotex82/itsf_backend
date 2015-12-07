@@ -9,5 +9,7 @@
     - "#{engine.to_s.deconstantize}::Configuration".constantize.base_controller_descendants.each do |kontroller|
       %tr
         %th.col-md-3= kontroller.resource_class.model_name.human(count: :other)
-        %td.text-left
+        %td
           %span.label.label-default= kontroller.resource_class.count
+        %td
+          /= engine.routes.url_helpers.send("#{kontroller.new.controller_name}_path")

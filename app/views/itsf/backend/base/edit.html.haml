@@ -8,7 +8,7 @@
       = f.button :submit, class: 'btn btn-success'
 
   .panel-footer
-    = link_to t('.show'), resource_path(@resource), class: 'btn btn-primary'
+    = link_to t('.show'), resource_path(@resource), class: 'btn btn-primary btn-responsive'
     = link_to collection_path, class: 'btn btn-default pull-right' do
       %span.glyphicon.glyphicon-arrow-left
-      = t('.back')
+      %span.btn-text= t('.back')

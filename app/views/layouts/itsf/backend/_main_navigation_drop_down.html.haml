@@ -1,4 +1,4 @@
-%li.dropdown
+%li.dropdown.active
   = link_to('#', { class: 'dropdown-toggle', 'data-toggle': 'dropdown', role: 'button', 'aria-haspopup': true, 'aria-expanded': false }) do
     = t(engine.engine_name)
     %span.caret
@@ -7,8 +7,8 @@
     - if controllers.respond_to?(:call)
       - controllers = controllers.call
     - controllers.each do |kontroller|
-      - resource_klass = kontroller.new.send(:resource_class)
-      %li
+      - resource_klass = kontroller.resource_class
+      %li{ class: (kontroller == controller.class ? 'active' : nil) }
         = link_to(send(engine.engine_name).url_for(controller: kontroller.name.underscore.gsub('_controller', ''))) do
           = resource_klass.model_name.human(count: :other)
           %span.label.label-default= resource_klass.count

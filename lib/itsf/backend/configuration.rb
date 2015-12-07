@@ -30,6 +30,10 @@ module Itsf
       mattr_accessor :title_link do
         Proc.new { |view| view.link_to(view.t('.title'), '#', class: 'navbar-brand') }
       end
+
+      mattr_accessor :resource_title_methods do
+        [:human, :name, :email, :to_s] 
+      end
     end
   end
 end

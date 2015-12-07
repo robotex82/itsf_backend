@@ -12,8 +12,10 @@ module RansackFormBuilderExtensions
       text_field_options.reverse_merge!(autofocus: true)
     end
 
-    label(attribute_name, label_options) +
-      text_field(attribute_name, text_field_options)
+    @template.content_tag(:div, class: 'form-group') do
+      label(attribute_name, label_options) +
+        text_field(attribute_name, text_field_options)
+    end
 
     # placeholder = true
 
@@ -38,14 +40,28 @@ module RansackFormBuilderExtensions
     input :locale_eq, as: :select, collection: I18n.available_locales.collect { |l| [l.to_s, l.to_s]}, include_blank: true
   end
 
+  def excluding_scopes(*args)
+    options = args.extract_options!
+    scope_names = *args
+
+    @template.content_tag(:div, class: 'excluding-scopes') do
+      scope_names.map { |scope_name| scope(scope_name) }.join.html_safe
+    end
+  end
+
   def scope(scope_name)
     t = @template
     value = t.params.has_key?(:q) && t.params[:q].has_key?(:scopes) && t.params[:q][:scopes].has_key?(scope_name) && t.params[:q][:scopes][scope_name] == '1'
-    t.content_tag(:div, class: 'checkbox btn btn-default btn-xs') do
-      t.content_tag(:label) do
-        t.check_box_tag("q[scopes][#{scope_name}]", "1", value) +
-        t.t("activerecord.scopes.#{scope_name}")
-      end
+    t.content_tag(:label) do
+      t.check_box_tag("q[scopes][#{scope_name}]", "1", value) +
+      t.t("activerecord.scopes.#{scope_name}")
     end
+  end
+
+  def scopes(*args)
+    options = args.extract_options!
+    scope_names = *args
+
+    scope_names.map { |scope_name| scope(scope_name) }.join.html_safe
   end
 end

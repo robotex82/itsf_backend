@@ -3,15 +3,19 @@
 .panel.panel-default.panel-with-actions
   .panel-heading
     .panel-title
-      %h3= @resource.try_all(:human, :name, :to_s)
+      %h3= @resource.try_all(*Itsf::Backend::Configuration.resource_title_methods)
     .panel-actions
-      = link_to(t('.destroy'), resource_path(@resource), method: :delete, class: 'btn btn-danger', 'data-confirm': I18n.t('confirmations.delete'))
+      = link_to(resource_path(@resource), method: :delete, class: 'btn btn-danger btn-responsive', 'data-confirm': I18n.t('confirmations.delete')) do
+        %span.glyphicon.glyphicon-fire
+        %span.btn-text= t('.destroy')
 
   %table.table.table-striped.table-condensed.table-hover
     = render 'show', resource: @resource, resource_class: resource_class
 
   .panel-footer
-    = link_to t('.edit'), edit_resource_path(@resource), class: 'btn btn-primary'
+    = link_to(edit_resource_path(@resource), class: 'btn btn-primary btn-responsive') do
+      %span.glyphicon.glyphicon-pencil
+      %span.btn-text= t('.edit')
     = link_to collection_path, class: 'btn btn-default pull-right' do
       %span.glyphicon.glyphicon-arrow-left
-      = t('.back')
+      %span.btn-text= t('.back')

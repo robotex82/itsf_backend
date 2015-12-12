@@ -1,3 +1,27 @@
 = Itsf::Backend
 
+= Installation in Rails Engines/Gem:
+
+Add it to your Gemspec and require it:
+
+  # my_engine.gemspec
+  s.add_dependency 'itsf_backend'
+
+  # lib/my_engine.rb
+  require 'itsf_backend'
+
+Continue following the instructions for "Installation in Rails Applications" in the consuming app.
+
+= Installation in Rails Applications
+
+Add it to your Gemfile
+
+  # Gemfile
+  gem 'itsf_backend'
+
+Generate the initializer:
+  
+  rails g itsf:backend:install
+
+
 This project rocks and uses MIT-LICENSE.

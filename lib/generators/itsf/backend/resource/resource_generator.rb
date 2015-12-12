@@ -82,7 +82,7 @@ module Itsf
         end
 
         def params_key
-          singular_table_name
+          class_name.demodulize.underscore
         end
 
         def route_resource_name

@@ -1,4 +1,4 @@
-.panel.panel-default.panel-with-actions
+.panel.panel-default.panel-with-actions.itsf-dashboard-panel
   .panel-heading
     .panel-title
       = t(engine.engine_name)
@@ -9,7 +9,5 @@
     - "#{engine.to_s.deconstantize}::Configuration".constantize.base_controller_descendants.each do |kontroller|
       %tr
         %th.col-md-3= kontroller.resource_class.model_name.human(count: :other)
-        %td
+        %td.item-count
           %span.label.label-default= kontroller.resource_class.count
-        %td
-          /= engine.routes.url_helpers.send("#{kontroller.new.controller_name}_path")

@@ -4,6 +4,9 @@ de:
       all: Alle
       published: Veröffentlicht
       unpublished: Unveröffentlicht
+  acts_as_list:
+    inserted_after: "%{inserted_resource} nach %{target_resource} eingefügt"
+    inserted_before: "%{inserted_resource} vor %{target_resource} eingefügt"
   booleans:
     'true': Ja
     'false': Nein
@@ -43,6 +46,11 @@ de:
           back: "Zurück"
           destroy: "Löschen"
           edit: "Bearbeiten"
+        table_actions:
+          destroy: "Löschen"
+          edit: "Bearbeiten"
+          show: "Anzeigen"
+          title: "Aktionen"
       home:
         dashboard_panel:
           back: "Zurück"
@@ -66,9 +74,3 @@ de:
     labels:
       q:
         locale_eq: Sprache gleicht
-  table:
-    actions:
-      destroy: "Löschen"
-      edit: "Bearbeiten"
-      show: "Anzeigen"
-      title: "Aktionen"

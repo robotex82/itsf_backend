@@ -20,7 +20,7 @@ class <%= controller_name %> < Itsf::Backend::BaseController
     resource_class
   end
 
-  def permit_params
+  def permitted_params
     # Set the allowed params, for your create and update methods.
     # 
     # Example: params

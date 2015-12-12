@@ -24,12 +24,7 @@
   .table-responsive
     = table_for(@collection, class: resource_class, presenter: BootstrapTablePresenter) do |table, record|
       = render 'table', table: table, resource_class: resource_class
-
-      = table.actions do
-        .btn-group
-          = table.action :show, resource_path(record), id: "link-to-#{controller.class.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-#{record.to_param}-show"
-          = table.action :edit, edit_resource_path(record), id: "link-to-#{controller.class.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-#{record.to_param}-edit"
-          = table.action :destroy, resource_path(record), method: :delete, id: "link-to-#{controller.class.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-#{record.to_param}-destroy"
+      = render 'table_actions', table: table
 
   .panel-footer
     .row

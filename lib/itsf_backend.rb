@@ -1,12 +1,17 @@
 require 'ace-rails-ap'
 require 'admino'
+require 'coffee-rails'
 require 'kaminari'
 require 'bootstrap-kaminari-views'
+require 'jquery-rails'
+require 'jquery-ui-rails'
 require 'haml-rails'
+require 'rails-i18n'
 require 'less-rails'
 require 'responders'
+require 'route_translator'
 require 'simple_form'
 require 'twitter-bootstrap-rails'
 
-require "itsf/backend"
-require "itsf/backend/engine"
+require 'itsf/backend'
+require 'itsf/backend/engine'

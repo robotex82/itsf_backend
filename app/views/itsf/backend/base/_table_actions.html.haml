@@ -1,5 +1,5 @@
 = table.column(:actions) do |resource|
-  - id_base = "link-to-#{controller.class.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-#{resource.to_param}-show"
+  - id_base = "link-to-#{controller.class.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-#{resource.to_param}"
   .btn-group
     = link_to(resource_path(resource), id: "#{id_base}-show", class: 'btn btn-xs btn-responsive btn-default') do
       %span.glyphicon.glyphicon-eye-open"

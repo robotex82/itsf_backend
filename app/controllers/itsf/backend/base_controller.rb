@@ -5,6 +5,8 @@ module Itsf::Backend
   class BaseController < Configuration.resource_base_controller.constantize
     if Itsf::Backend.features?(:pundit)
       include RestActionsConcernWithPundit
+      include Pundit
+      prepend Controller::PunditNamespacedAuthorizeConcern
     else
       include RestActionsConcern
     end
@@ -12,8 +14,8 @@ module Itsf::Backend
     include ResourceInflectionsConcern
     include Controller::PaginationConcern if Itsf::Backend.features?(:kaminari)
 
-    include Pundit
-    prepend Controller::PunditNamespacedAuthorizeConcern
+    # include Pundit
+    # prepend Controller::PunditNamespacedAuthorizeConcern
     helper_method :engine_policy
 
     helper_method :resource_class

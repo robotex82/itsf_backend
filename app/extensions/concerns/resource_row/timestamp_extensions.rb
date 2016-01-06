@@ -4,9 +4,15 @@ module ResourceRow
   module TimestampExtensions
     extend ActiveSupport::Concern
 
+    def timestamp(attribute_name, options = {})
+      options.reverse_merge!(format: :short)
+      format = options.delete(:format)
+      column(attribute_name) { |resource| I18n.l(resource.send(attribute_name), format: format) if resource.send(attribute_name).present? }
+    end
+
     def timestamps
-      column(:created_at) { |resource| I18n.l(resource.created_at, format: :short) if resource.created_at.present? }
-      column(:updated_at) { |resource| I18n.l(resource.updated_at, format: :short) if resource.updated_at.present? }
+      timestamp :created_at 
+      timestamp :updated_at 
     end
 
     def column_timestamps

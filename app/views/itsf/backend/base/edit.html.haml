@@ -8,9 +8,11 @@
       = f.button :submit, class: 'btn btn-success'
 
   .panel-footer
-    = link_to resource_path(@resource), class: 'btn btn-primary btn-responsive' do
-      %span.glyphicon.glyphicon-eye-open
-      %span.btn-text= t('.show')
-    = link_to collection_path, class: 'btn btn-default btn-responsive pull-right' do
-      %span.glyphicon.glyphicon-arrow-left
-      %span.btn-text= t('.back')
+
+.well
+  = link_to resource_path(@resource), class: 'btn btn-primary btn-responsive' do
+    %span.glyphicon.glyphicon-eye-open
+    %span.btn-text= t('.show')
+  = link_to collection_path, class: 'btn btn-default btn-responsive pull-right' do
+    %span.glyphicon.glyphicon-arrow-left
+    %span.btn-text= t('.back')

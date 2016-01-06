@@ -1,0 +1,7 @@
+defaults:
+  permissions:
+    - itsf/backend/dashboard
+
+  roles:
+    itsf/backend/administrator:
+      - itsf/backend/dashboard

@@ -1,2 +1,2 @@
-- resource_class.attribute_names.reject { |n| %w(id created_at updated_at).include? n }.each do |name|
+- resource_class.attribute_names.delete_if { |name| Itsf::Backend.hidden_attributes_for[:edit].include?(name.to_sym) }.each do |name|
   = form.input name

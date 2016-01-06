@@ -11,7 +11,10 @@
           %span.label.label-default= kontroller.resource_class.count
         %td.text-right= link_to(t('.view'), { controller: kontroller.name.underscore.gsub('_controller', '') }, id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-index" ,class: 'btn btn-primary btn-xs')
 
-  .panel-footer.text-right
+  .panel-footer
+
+.well
+  .btn-container-right
     = link_to(main_app.itsf_backend_path, class: 'btn btn-default btn-responsive') do
       %span.glyphicon.glyphicon-arrow-left
       %span.btn-text= t('.back')

@@ -75,4 +75,20 @@ Itsf::Backend.configure do |config|
   # Default: config.resource_title_methods = [:human, :name, :email, :to_s]
   # 
   config.resource_title_methods = [:human, :name, :email, :to_s]
+
+  # This attributes will be hidden by default in index, show, edit and update views.
+  # 
+  # Default: config.hidden_attributes = [:id, :friendly_id, :lft, :rgt, :depth]
+  # 
+  config.hidden_attributes_for = {
+    edit:  [:id, :slug, :lft, :rgt, :depth, :created_at, :updated_at],
+    index: [:id, :slug, :lft, :rgt, :depth],
+    show:  [:id, :slug, :lft, :rgt, :depth]
+  }
+
+  # Sets the default pagination size 
+  # 
+  # Default config.default_pagination_size = 15
+  # 
+  config.default_pagination_size = 15
 end

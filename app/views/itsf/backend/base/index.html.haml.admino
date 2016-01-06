@@ -22,23 +22,19 @@
           .search.bottom-margin-1
             = render 'search', form: f
           .filter-actions
-            - if f.is_a?(SimpleForm::FormBuilder)
-              = f.button :submit, t('ransack.search'), class: 'btn btn-success'
-            - else
-              = f.submit
-              
+            = f.button :submit, t('ransack.search'), class: 'btn btn-success'
+
   .table-responsive
-    = render_collection(@collection, resource_class, as: :bootstrap_table) do |table|
-      = render 'table', table: table
+    = table_for(@collection, class: resource_class, presenter: BootstrapTablePresenter) do |table, record|
+      = render 'table', table: table, resource_class: resource_class
       = render 'table_actions', table: table
 
   .panel-footer
-    - if Itsf::Backend.features?(:kaminari)
-      .row
-        .col-md-4
-        .col-md-4
-          .text-center= paginate @collection, theme: 'twitter-bootstrap-3'
-        .col-md-4
+    .row
+      .col-md-4
+      .col-md-4
+        .text-center= paginate @collection, theme: 'twitter-bootstrap-3'
+      .col-md-4
 
 .well
   .btn-container-right

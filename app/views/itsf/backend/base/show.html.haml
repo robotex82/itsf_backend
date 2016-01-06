@@ -1,21 +1,28 @@
 %p#notice= notice
 
-.panel.panel-default.panel-with-actions
-  .panel-heading
-    .panel-title
-      %h3= @resource.try_all(*Itsf::Backend::Configuration.resource_title_methods)
-    .panel-actions
-      = link_to(resource_path(@resource), method: :delete, class: 'btn btn-danger btn-responsive', 'data-confirm': I18n.t('confirmations.delete')) do
-        %span.glyphicon.glyphicon-fire
-        %span.btn-text= t('.destroy')
+#page-title.bottom-margin-1
+  .row
+    .col-xs-8
+      %h1= @resource.try_all(*Itsf::Backend::Configuration.resource_title_methods)
+    .col-xs-4
+      #page-actions.btn-container-right
+        = link_to(resource_path(@resource), method: :delete, class: 'btn btn-danger btn-responsive', 'data-confirm': I18n.t('confirmations.delete')) do
+          %span.glyphicon.glyphicon-fire
+          %span.btn-text= t('.destroy')
 
+.panel.panel-default.panel-with-actions
   %table.table.table-striped.table-condensed.table-hover
-    = render 'show', resource: @resource, resource_class: resource_class
+    = render_resource(@resource, as: :bootstrap_attribute_table) do |table|
+      = render 'show', table: table
 
   .panel-footer
-    = link_to(edit_resource_path(@resource), class: 'btn btn-primary btn-responsive') do
-      %span.glyphicon.glyphicon-pencil
-      %span.btn-text= t('.edit')
-    = link_to collection_path, class: 'btn btn-default btn-responsive pull-right' do
-      %span.glyphicon.glyphicon-arrow-left
-      %span.btn-text= t('.back')
+
+= render 'show_extras', resource: @resource
+
+.well
+  = link_to(edit_resource_path(@resource), class: 'btn btn-primary btn-responsive') do
+    %span.glyphicon.glyphicon-pencil
+    %span.btn-text= t('.edit')
+  = link_to collection_path, class: 'btn btn-default btn-responsive pull-right' do
+    %span.glyphicon.glyphicon-arrow-left
+    %span.btn-text= t('.back')

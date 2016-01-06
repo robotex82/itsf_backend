@@ -1,4 +1,2 @@
-- resource_class.attribute_names.each do |name|
-  %tr
-    %th.key.col-md-2{ role: name.dasherize }= resource_class.human_attribute_name(name)
-    %td.value.col-md-10{ role: name.dasherize }= resource.send(name)
+- resource_class.attribute_names.delete_if { |name| Itsf::Backend.hidden_attributes_for[:show].include?(name.to_sym) }.each do |name|
+  = table.row name

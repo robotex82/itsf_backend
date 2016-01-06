@@ -4,9 +4,13 @@ module HeadRow
   module TimestampExtensions
     extend ActiveSupport::Concern
 
+    def timestamp(attribute_name, options = {})
+      column attribute_name
+    end
+
     def timestamps
-      column :created_at
-      column :updated_at
+      timestamp :created_at
+      timestamp :updated_at
     end
 
     def column_timestamps

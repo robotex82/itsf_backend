@@ -3,7 +3,7 @@
     .col-xs-8
       %h1
         = t('.title', inflections)
-        %span.label.label-default= @collection.total_count
+        %span.label.label-default= Itsf::Backend.features?(:kaminari) ? "#{@collection.total_count}/#{resource_class.count}" : @collection.count
     .col-xs-4
       #page-actions.btn-container-right
         .btn-group
@@ -15,15 +15,16 @@
 .panel.panel-default.panel-with-actions
   - if Itsf::Backend.features?(:ransack)
     .panel-body
-      .filter
+      #filter
         = search_form_for(@q, url: collection_path, class: 'form-inline', html: { 'data-auto-submit': true }) do |f|
-          .scopes.bottom-margin-1
+          #scopes.bottom-margin-1
             = render 'scopes', form: f
-          .search.bottom-margin-1
+          #search.bottom-margin-1
             = render 'search', form: f
-          .filter-actions
+          #filter-actions.btn-group
             - if f.is_a?(SimpleForm::FormBuilder)
               = f.button :submit, t('ransack.search'), class: 'btn btn-success'
+              = link_to t('ransack.reset'), {},class: 'btn btn-danger'
             - else
               = f.submit
               

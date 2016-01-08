@@ -1,8 +1,10 @@
 module Itsf::Backend
   class HomeController < Configuration.home_base_controller.constantize
-    include Pundit
-    prepend Controller::PunditNamespacedAuthorizeConcern
-    helper_method :engine_policy
+    if Itsf::Backend.features?(:pundit)
+      include Pundit
+      prepend Controller::PunditNamespacedAuthorizeConcern
+      helper_method :engine_policy
+    end
     
     layout 'itsf/backend/base'
 

@@ -7,7 +7,7 @@ $ ->
     timerid = setTimeout((->
       form.submit()
       return
-    ), 500)
+    ), 1000)
     return
 
 $ ->
@@ -17,5 +17,5 @@ $ ->
     timerid = setTimeout((->
       form.submit()
       return
-    ), 500)
+    ), 1000)
     return

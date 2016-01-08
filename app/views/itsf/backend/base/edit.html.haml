@@ -4,6 +4,7 @@
 
   .panel-body
     = simple_form_for(@resource, url: resource_path(@resource)) do |f|
+      = render partial: 'form_errors', locals: { resource: f.object }
       = render 'form', form: f
       = f.button :submit, class: 'btn btn-success'
 

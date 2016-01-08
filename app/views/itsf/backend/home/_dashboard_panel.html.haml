@@ -1,10 +1,10 @@
 .panel.panel-default
   .panel-heading
     .panel-title
-      = t(engine.engine_name)
+      = t("classes.#{engine.name.underscore}")
 
   %table.table.table-striped.table-hover.table-condensed
-    - "#{engine.to_s.deconstantize}::Configuration".constantize.base_controller_descendants.each do |kontroller|
+    - "#{engine.to_s.deconstantize}::Configuration".constantize.base_controller_descendants.call.each do |kontroller|
       %tr
         %th.col-md-3= kontroller.resource_class.model_name.human(count: :other)
         %td.text-left
@@ -15,6 +15,7 @@
 
 .well
   .btn-container-right
-    = link_to(main_app.itsf_backend_path, class: 'btn btn-default btn-responsive') do
-      %span.glyphicon.glyphicon-arrow-left
-      %span.btn-text= t('.back')
+    - if main_app.respond_to?(:itsf_backend_path)
+      = link_to(main_app.itsf_backend_path, class: 'btn btn-default btn-responsive') do
+        %span.glyphicon.glyphicon-arrow-left
+        %span.btn-text= t('.back')

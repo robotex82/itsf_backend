@@ -19,9 +19,9 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", ">= 4.0"
   s.add_dependency 'ace-rails-ap'
-  # s.add_dependency 'admino'
   s.add_dependency 'coffee-rails'
   s.add_dependency 'kaminari'
+  s.add_dependency 'kaminari-i18n'
   s.add_dependency 'bootstrap-kaminari-views'
   s.add_dependency 'jquery-rails'
   s.add_dependency 'jquery-ui-rails'
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'pundit'
   s.add_dependency 'route_translator'
   s.add_dependency 'rails-i18n'
+  s.add_dependency 'rails_rad'
   s.add_dependency 'ransack'
   s.add_dependency 'responders'
   s.add_dependency 'resource_renderer'

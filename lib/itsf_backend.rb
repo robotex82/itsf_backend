@@ -1,6 +1,7 @@
 require 'ace-rails-ap'
 require 'coffee-rails'
 require 'kaminari'
+require 'kaminari-i18n'
 require 'bootstrap-kaminari-views'
 require 'jquery-rails'
 require 'jquery-ui-rails'

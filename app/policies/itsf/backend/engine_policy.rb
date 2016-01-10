@@ -3,7 +3,7 @@ module Itsf::Backend
     def access?
       permission_name = self.class.name.gsub('Policy', '').underscore
       allowed = user.allowed_to? permission_name
-      if allowed 
+      if allowed
         Rails.logger.debug "User #{user} is allowed to access #{permission_name}"
       else
         Rails.logger.debug "User #{user} is not allowed to access #{permission_name}"

@@ -86,7 +86,7 @@ module Controller
     end
 
     def search_scopes
-      return [] unless params.has_key?(:q) && params[:q].has_key?(:scopes)
+      return [] unless params.key?(:q) && params[:q].key?(:scopes)
       params[:q][:scopes].keys - ['unscoped']
     end
   end

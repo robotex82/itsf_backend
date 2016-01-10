@@ -1,4 +1,4 @@
-module Controller 
+module Controller
   module PunditNamespacedAuthorizeConcern
     extend ActiveSupport::Concern
 
@@ -11,5 +11,5 @@ module Controller
       policy_name = engine.name.to_sym
       policy(policy_name)
     end
-  end   
+  end
 end

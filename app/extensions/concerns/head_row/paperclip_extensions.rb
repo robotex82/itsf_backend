@@ -4,7 +4,7 @@ module HeadRow
   module PaperclipExtensions
     extend ActiveSupport::Concern
 
-    def thumbnail(attachment_name, options = {})
+    def thumbnail(attachment_name, _options = {})
       column(attachment_name)
     end
   end

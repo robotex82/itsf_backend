@@ -18,7 +18,7 @@ module ResourceRow
         'acts-as-list-item-on-drop-target': h.url_for([:reposition, resource])
       }
 
-      column(:acts_as_list) do |resource|
+      column(:acts_as_list) do |_resource|
         h.content_tag(:span, data: data_attributes, class: 'btn btn-xs btn-default acts-as-list-item') do
           h.tag(:span, class: 'glyphicon glyphicon-sort')
         end

@@ -4,7 +4,7 @@ module HeadRow
   module TimestampExtensions
     extend ActiveSupport::Concern
 
-    def timestamp(attribute_name, options = {})
+    def timestamp(attribute_name, _options = {})
       column attribute_name
     end
 

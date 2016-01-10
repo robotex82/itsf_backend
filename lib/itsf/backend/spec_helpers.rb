@@ -22,19 +22,19 @@ module Itsf
       end
 
       def create_resource_instance_for_controller(controller_class)
-        create(controller_class.resource_class.name.underscore.gsub('/', '_'))
+        create(controller_class.resource_class.name.underscore.tr('/', '_'))
       end
 
-      def ensure_current_action(engine_class, controller_class, action_name, instance = nil)
+      def ensure_current_action(_engine_class, controller_class, action_name, instance = nil)
         case action_name
         when :index
           expect(page).to have_content(controller_class.resource_class.model_name.human(count: :other))
         when :new
-          expect(page).to have_content(I18n.t("itsf.backend.base.new.title", resource_name: controller_class.resource_class.model_name.human))
+          expect(page).to have_content(I18n.t('itsf.backend.base.new.title', resource_name: controller_class.resource_class.model_name.human))
         when :show
           expect(page).to have_content(instance.try_all(*Itsf::Backend::Configuration.resource_title_methods))
         when :edit
-          expect(page).to have_content(I18n.t("itsf.backend.base.edit.title", resource_name: instance.class.model_name.human))
+          expect(page).to have_content(I18n.t('itsf.backend.base.edit.title', resource_name: instance.class.model_name.human))
         when :destroy
           expect(page).to have_content(instance.class.model_name.human(count: :other))
         end

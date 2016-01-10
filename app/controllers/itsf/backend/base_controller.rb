@@ -15,15 +15,15 @@ module Itsf::Backend
     include Controller::ResourceInflectionsConcern
     include Controller::RansackConcern if Itsf::Backend.features?(:ransack)
     include Controller::PaginationConcern if Itsf::Backend.features?(:kaminari)
-    
+
     helper_method :resource_class
 
     helper ResourceRenderer::ViewHelper
-    
+
     def self.resource_class
       name.gsub('Controller', '').constantize
     end
-    
+
     def resource_class
       self.class.resource_class
     end

@@ -4,13 +4,11 @@ module SimpleFormFormBuilderExtensions
     options = args.extract_options!
     syntax = options.delete(:syntax)
 
-    input_html = options.has_key?(:input_html) ? options[:input_html] : {}
+    input_html = options.key?(:input_html) ? options[:input_html] : {}
 
     input_html['data-add-editor'] = true
 
-    if syntax.present?
-      input_html['data-editor-syntax'] = syntax
-    end
+    input_html['data-editor-syntax'] = syntax if syntax.present?
 
     options[:input_html] = input_html
 
@@ -21,7 +19,7 @@ module SimpleFormFormBuilderExtensions
     input_options = {
       collection: I18n.available_locales,
       as: :radio_buttons,
-      item_label_class: "radio-inline",
+      item_label_class: 'radio-inline',
       item_wrapper_tag: false
     }
 

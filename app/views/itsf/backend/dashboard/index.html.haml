@@ -1,7 +1,7 @@
 #page-title.bottom-margin-1
   %h3= t('.title', engine_name: t(controller.class.name.deconstantize.underscore.gsub('/', '_')))
 
-- Itsf::Backend::Configuration.backend_engines.each do |engine|
+- Itsf::Backend::Configuration.backend_engines.call.each do |engine|
   - if !Itsf::Backend.features?(:pundit) || engine_policy(engine).access?
     .col-lg-6= render 'dashboard_panel', engine: engine
 

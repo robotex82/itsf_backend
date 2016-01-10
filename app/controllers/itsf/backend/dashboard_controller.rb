@@ -6,7 +6,7 @@ module Itsf::Backend
       include Pundit
       prepend Controller::PunditNamespacedAuthorizeConcern
       helper_method :engine_policy
-      
+
       after_action :verify_authorized
 
       def index

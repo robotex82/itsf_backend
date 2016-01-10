@@ -11,8 +11,8 @@ module ResourceRow
     end
 
     def timestamps
-      timestamp :created_at 
-      timestamp :updated_at 
+      timestamp :created_at
+      timestamp :updated_at
     end
 
     def column_timestamps

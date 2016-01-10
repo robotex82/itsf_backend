@@ -13,7 +13,7 @@ module Itsf::Backend
     end
 
     def show?
-      scope.where(:id => record.id).exists?
+      scope.where(id: record.id).exists?
     end
 
     def create?
@@ -60,7 +60,7 @@ module Itsf::Backend
 
     def authorize_with_rbac(user, record, method_name)
       resource_name = record.class == Class ? record.name : record.class.name
-      permission_identifier = "#{resource_name.underscore}/#{method_name.to_s.chomp('?')}"   
+      permission_identifier = "#{resource_name.underscore}/#{method_name.to_s.chomp('?')}"
       user.allowed_to? permission_identifier
     end
   end

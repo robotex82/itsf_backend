@@ -1,15 +1,15 @@
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
-require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_view/railtie"
-require "sprockets/railtie"
+require 'active_record/railtie'
+require 'action_controller/railtie'
+require 'action_mailer/railtie'
+require 'action_view/railtie'
+require 'sprockets/railtie'
 # require "rails/test_unit/railtie"
 
 Bundler.require(*Rails.groups)
-require "itsf_backend"
+require 'itsf_backend'
 
 module Dummy
   class Application < Rails::Application
@@ -29,11 +29,10 @@ module Dummy
     config.active_record.raise_in_transactional_callbacks = true
 
     config.generators do |g|
-      g.test_framework      :rspec,        :fixture => false
-      g.fixture_replacement :factory_girl, :dir => 'spec/factories'
+      g.test_framework :rspec, fixture: false
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
       g.assets false
       g.helper false
     end
   end
 end
-

@@ -3,4 +3,4 @@
     - if request.original_url  =~ /#{main_app.send("#{engine.engine_name}_path")}/
       = render partial: 'layouts/itsf/backend/main_navigation_drop_down', locals: { engine: engine }
     - else
-      %li= link_to t(engine.engine_name), main_app.send("#{engine.engine_name}_path")
+      %li= link_to t("classes.#{engine.name.underscore}"), main_app.send("#{engine.engine_name}_path")

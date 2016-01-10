@@ -1,9 +1,9 @@
 %li.dropdown.active
   = link_to('#', { class: 'dropdown-toggle', 'data-toggle': 'dropdown', role: 'button', 'aria-haspopup': true, 'aria-expanded': false }) do
-    = t(engine.engine_name)
+    = t("classes.#{engine.name.underscore}")
     %span.caret
   %ul.dropdown-menu
-    - controllers = engine.to_s.gsub('::Engine', '::Configuration').constantize.base_controller_descendants
+    - controllers = engine.to_s.gsub('::Engine', '::Configuration').constantize.registered_controllers
     - if controllers.respond_to?(:call)
       - controllers = controllers.call
     - controllers.each do |kontroller|

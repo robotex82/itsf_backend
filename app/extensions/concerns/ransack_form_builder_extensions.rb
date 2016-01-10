@@ -37,7 +37,7 @@ module RansackFormBuilderExtensions
   end
 
   def locale_select
-    input :locale_eq, as: :select, collection: I18n.available_locales.collect { |l| [l.to_s, l.to_s]}, include_blank: true
+    input :locale_eq, as: :select, collection: I18n.available_locales.collect { |l| [l.to_s, l.to_s] }, include_blank: true
   end
 
   def excluding_scopes(*args)
@@ -51,10 +51,10 @@ module RansackFormBuilderExtensions
 
   def scope(scope_name)
     t = @template
-    value = t.params.has_key?(:q) && t.params[:q].has_key?(:scopes) && t.params[:q][:scopes].has_key?(scope_name) && t.params[:q][:scopes][scope_name] == '1'
+    value = t.params.key?(:q) && t.params[:q].key?(:scopes) && t.params[:q][:scopes].key?(scope_name) && t.params[:q][:scopes][scope_name] == '1'
     t.content_tag(:label) do
-      t.check_box_tag("q[scopes][#{scope_name}]", "1", value) +
-      t.t("activerecord.scopes.#{scope_name}")
+      t.check_box_tag("q[scopes][#{scope_name}]", '1', value) +
+        t.t("activerecord.scopes.#{scope_name}")
     end
   end
 

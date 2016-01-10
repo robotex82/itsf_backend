@@ -8,7 +8,7 @@ module Itsf
         yield self
       end
 
-      mattr_accessor(:backend_engines) { [] }
+      mattr_accessor(:backend_engines) { -> { [] } }
       mattr_accessor(:resource_base_controller) { '::ApplicationController' }
       mattr_accessor(:dashboard_base_controller) { '::ApplicationController' }
       mattr_accessor(:home_base_controller) { '::ApplicationController' }
@@ -22,13 +22,13 @@ module Itsf
       mattr_accessor(:default_pagination_size) { 15 }
 
       def registered_controllers
-        backend_engines.collect do |engine|
-          "#{engine.parent}::Configuration".constantize.base_controller_descendants
+        backend_engines.call.collect do |engine|
+          "#{engine.parent}::Configuration".constantize.registered_controllers.call
         end.flatten
       end
 
       def registered_resources
-        registered_controllers.collect do |controller|
+        registered_controllers.call.collect do |controller|
           controller.resource_class if controller.respond_to?(:resource_class)
         end.compact
       end

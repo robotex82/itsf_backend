@@ -1,12 +1,12 @@
 .panel.panel-default.panel-with-actions.itsf-dashboard-panel
   .panel-heading
     .panel-title
-      = t(engine.engine_name)
+      = t("classes.#{engine.name.underscore}")
     .panel-actions
       = link_to(t('.view'), main_app.send("#{engine.engine_name}_path"), class: 'btn btn-primary btn-xs')
 
   %table.table.table-striped.table-hover.table-condensed
-    - "#{engine.to_s.deconstantize}::Configuration".constantize.base_controller_descendants.each do |kontroller|
+    - "#{engine.to_s.deconstantize}::Configuration".constantize.registered_controllers.call.each do |kontroller|
       - if !Itsf::Backend.features?(:pundit) || policy(kontroller.resource_class).index?
         %tr
           %th.col-md-3= kontroller.resource_class.model_name.human(count: :other)

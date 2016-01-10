@@ -15,9 +15,9 @@ class <%= controller_name %> < Itsf::Backend::BaseController
     #
     # Example: current_user.posts.includes(:comments)
     #
-    # Default: resource_class
+    # Default: super
     #
-    resource_class
+    super
   end
 
   def permitted_params

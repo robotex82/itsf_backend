@@ -6,7 +6,6 @@ module Itsf
 
         source_root File.expand_path('../templates', __FILE__)
 
-
         def test
           p class_name
           p class_path
@@ -44,7 +43,7 @@ module Itsf
         end
 
         def generate_controller
-          template "home_controller.rb", File.join(home_controller_file_path, home_controller_file_name)
+          template 'home_controller.rb', File.join(home_controller_file_path, home_controller_file_name)
         end
 
         def generate_routes

@@ -5,7 +5,7 @@ module Itsf::Backend
       prepend Controller::PunditNamespacedAuthorizeConcern
       helper_method :engine_policy
     end
-    
+
     layout 'itsf/backend/base'
 
     helper_method :engine

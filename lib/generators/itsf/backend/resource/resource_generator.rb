@@ -45,10 +45,8 @@ module Itsf
           p params_key
         end
 
-
-
         def generate_controller
-          template "controller.rb", File.join(admin_controller_file_path, admin_controller_file_name)
+          template 'controller.rb', File.join(admin_controller_file_path, admin_controller_file_name)
         end
 
         def generate_routes

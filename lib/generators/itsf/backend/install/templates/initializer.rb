@@ -29,7 +29,7 @@ Itsf::Backend.configure do |config|
   # 
   # Default: config.backend_engines = -> {[]}
   # 
-  config.backend_engines = > {[]}
+  config.backend_engines = -> {[]}
 
   # Proc that will be used to build the backend title link. The first and only 
   # argument is the view.

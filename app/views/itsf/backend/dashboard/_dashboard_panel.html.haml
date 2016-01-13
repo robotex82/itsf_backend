@@ -11,4 +11,8 @@
         %tr
           %th.col-md-3= kontroller.resource_class.model_name.human(count: :other)
           %td.item-count
-            %span.label.label-default= kontroller.resource_class.count
+            %span.label.label-default
+              - if respond_to?(:user_signed_in?) && user_signed_in? && kontroller.resource_class.respond_to?(:column_names) && kontroller.resource_class.column_names.include?('updated_at')
+                = "#{kontroller.resource_class.where("updated_at > ?", current_user.current_sign_in_at).count}/#{kontroller.resource_class.count}"
+              - else
+                = resource_klass.count

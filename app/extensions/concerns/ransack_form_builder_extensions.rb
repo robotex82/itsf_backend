@@ -37,7 +37,12 @@ module RansackFormBuilderExtensions
   end
 
   def locale_select
-    input :locale_eq, as: :select, collection: I18n.available_locales.collect { |l| [l.to_s, l.to_s] }, include_blank: true
+    if respond_to?(:input)
+      input :locale_eq, as: :select, collection: I18n.available_locales.collect { |l| [l.to_s, l.to_s] }, include_blank: true
+    else
+      label(:locale_eq) +  
+      select(:locale_eq, I18n.available_locales.collect { |l| [l.to_s, l.to_s] }, include_blank: true)
+    end
   end
 
   def excluding_scopes(*args)

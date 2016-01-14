@@ -11,6 +11,7 @@ module Itsf::Backend
     include Controller::ServiceInflectionsConcern
     include Controller::ServiceUrlsConcern
     include Controller::ServiceActionsConcern
+    include Controller::JsonApiConcern
 
     layout 'itsf/backend/base'
 

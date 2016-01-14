@@ -19,7 +19,7 @@
 
 = render 'show_extras', resource: @resource
 
-.well
+.well.well-sm
   = link_to(edit_resource_path(@resource), class: 'btn btn-primary btn-responsive') do
     %span.glyphicon.glyphicon-pencil
     %span.btn-text= t('.edit')

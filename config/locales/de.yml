@@ -59,6 +59,7 @@ de:
       home:
         dashboard_panel:
           back: "Zurück"
+          services: 'Dienste'
           view: 'Anzeigen'
         index:
           title: "Willkommen im %{engine_name}-Modul"
@@ -67,6 +68,18 @@ de:
           view: 'Anzeigen'
         index:
           title: "Willkommen im %{engine_name}-Modul"
+      service:
+        base:
+          index:
+            back: 'Zurück'
+            invoke: "Ausführen"
+            title: "%{service_name}"
+          invoke:
+            back: 'Zurück'
+            title: "%{service_name} ausführen"
+          success:
+            back: 'Zurück'
+            title: "%{service_name} ausgeführt"
   layouts:
     itsf:
       backend:

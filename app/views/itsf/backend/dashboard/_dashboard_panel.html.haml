@@ -13,6 +13,6 @@
           %td.item-count
             %span.label.label-default
               - if respond_to?(:user_signed_in?) && user_signed_in? && kontroller.resource_class.respond_to?(:column_names) && kontroller.resource_class.column_names.include?('updated_at')
-                = "#{kontroller.resource_class.where("updated_at > ?", current_user.current_sign_in_at).count}/#{kontroller.resource_class.count}"
+                = "#{kontroller.resource_class.where("updated_at > ?", current_user.last_sign_in_at).count}/#{kontroller.resource_class.count}"
               - else
                 = kontroller.resource_class.count

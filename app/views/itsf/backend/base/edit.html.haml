@@ -1,16 +1,14 @@
 .panel.panel-default
   .panel-heading
     %h1= t('.title', inflections)
-
   .panel-body
     = simple_form_for(@resource, url: resource_path(@resource)) do |f|
       = render partial: 'form_errors', locals: { resource: f.object }
       = render 'form', form: f
       = f.button :submit, class: 'btn btn-success'
-
   .panel-footer
 
-.well
+.well.well-sm
   = link_to resource_path(@resource), class: 'btn btn-primary btn-responsive' do
     %span.glyphicon.glyphicon-eye-open
     %span.btn-text= t('.show')

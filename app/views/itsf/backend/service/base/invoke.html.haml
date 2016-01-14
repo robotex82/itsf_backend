@@ -1,13 +1,14 @@
 %div.panel.panel-default
   %div.panel-heading
     %h1= t('.title', inflections)
+
   %div.panel-body
-    = simple_form_for(@resource, url: collection_path) do |f|
-      = render partial: 'form_errors', locals: { resource: f.object }
+    = simple_form_for(@service, url: call_service_path) do |f|
+      = render partial: 'form_errors', locals: { response: @response || f.object }
       = render 'form', form: f
       = f.button :submit, class: 'btn btn-success'
-  %div.panel-footer
 
+  %div.panel-footer
 .well.well-sm
   .btn-container-right
     = link_to collection_path, class: 'btn btn-default btn-responsive' do

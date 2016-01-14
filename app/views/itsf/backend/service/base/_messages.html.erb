@@ -1,0 +1,5 @@
+<div class="code">
+  <% messages.each do |message| %>
+    <p class="text-<%= message.level %>"><%= message.to_s %></p>
+  <% end %>
+</div>

@@ -2,7 +2,6 @@
   .panel-heading
     .panel-title
       = t("classes.#{engine.name.underscore}")
-
   %table.table.table-striped.table-hover.table-condensed
     - "#{engine.to_s.deconstantize}::Configuration".constantize.registered_controllers.call.each do |kontroller|
       %tr
@@ -10,14 +9,24 @@
         %td.text-left
           %span.label.label-default
             - if respond_to?(:user_signed_in?) && user_signed_in? && kontroller.resource_class.respond_to?(:column_names) && kontroller.resource_class.column_names.include?('updated_at')
-              = "#{kontroller.resource_class.where("updated_at > ?", current_user.current_sign_in_at).count}/#{kontroller.resource_class.count}"
+              = "#{kontroller.resource_class.where("updated_at > ?", current_user.last_sign_in_at).count}/#{kontroller.resource_class.count}"
             - else
               = kontroller.resource_class.count
         %td.text-right= link_to(t('.view'), { controller: kontroller.name.underscore.gsub('_controller', '') }, id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-index" ,class: 'btn btn-primary btn-xs')
-
   .panel-footer
 
-.well
+
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      = t(".services")
+  %table.table.table-striped.table-hover.table-condensed
+    - "#{engine.to_s.deconstantize}::Configuration".constantize.registered_services.call.each do |kontroller|
+      %tr
+        %th.col-md-3= t("classes.#{kontroller.service_class.name.underscore}")
+        %td.text-right= link_to(t('.view'), { controller: kontroller.name.underscore.gsub('_controller', '') }, id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-invoke" ,class: 'btn btn-primary btn-xs')
+
+.well.well-sm
   .btn-container-right
     - if main_app.respond_to?(:itsf_backend_path)
       = link_to(main_app.itsf_backend_path, class: 'btn btn-default btn-responsive') do

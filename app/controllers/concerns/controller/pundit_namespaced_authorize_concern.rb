@@ -2,6 +2,10 @@ module Controller
   module PunditNamespacedAuthorizeConcern
     extend ActiveSupport::Concern
 
+    included do
+      helper_method :engine_policy
+    end
+
     def authorize(policy, action, namespace = nil)
       policy = "#{namespace}::#{policy.to_s.camelize}".to_sym if namespace.present?
       super(policy, action)

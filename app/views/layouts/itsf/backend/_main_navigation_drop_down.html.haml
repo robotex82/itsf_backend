@@ -13,7 +13,7 @@
           = link_to(send(engine.engine_name).url_for(controller: kontroller.name.underscore.gsub('_controller', ''))) do
             = resource_klass.model_name.human(count: :other)
             %span.label.label-default
-              - if respond_to?(:user_signed_in?) && user_signed_in? && resource_klass.respond_to?(:column_names) && resource_klass.column_names.include?('updated_at')
+              - if respond_to?(:current_user) && current_user.respond_to?(:last_sign_in_at) && resource_klass.respond_to?(:column_names) && resource_klass.column_names.include?('updated_at')
                 = "#{resource_klass.where("updated_at > ?", current_user.last_sign_in_at).count}/#{resource_klass.count}"
               - else
                 = resource_klass.count

@@ -1,9 +1,38 @@
 en:
+  activerecord:
+    scopes:
+      all: All
+      published: Published
+      unpublished: Unpublished
+  acts_as_list:
+    inserted_after: "Inserted %{inserted_resource} after %{target_resource}"
+    inserted_before: "Inserted %{inserted_resource} before %{target_resource}"
+  attributes:
+    actions: 'Actions'
+    acts_as_list_actions: 'List'
+    acts_as_published_actions: 'Publishing'
+    published: Published?
   booleans:
     'true': Yes
     'false': No
   confirmations:
     delete: "Are you sure?"
+  flash:
+    actions:
+      create:
+        notice: "Created %{resource_name}."
+      update:
+        notice: "Updated %{resource_name}."
+      destroy:
+        notice: "Deleted %{resource_name}."
+        alert: "Could not delete %{resource_name}."
+      toggle_published:
+        published:
+          notice: "Published %{resource_name}."
+        unpublished:
+          notice: "Unpublished %{resource_name}."
+
+  itsf_backend: "Backend"
   itsf:
     backend:
       base:
@@ -12,22 +41,54 @@ en:
           show: "Show"
           title: "Edit %{resource_name}"
         index:
-          new: "Add %{resource_name}"
+          back: "Back"
+          new: "New %{resource_name}"
           title: "%{collection_name}"
         new:
           back: "Back"
-          title: "%{resource_name}"
+          title: "New %{resource_name}"
         show:
           back: "Back"
+          destroy: "Delete"
           edit: "Edit"
+        table_actions:
+          destroy: "Delete"
+          edit: "Edit"
+          show: "Show"
+          title: "Actions"
+      home:
+        dashboard_panel:
+          back: "Back"
+          services: 'Services'
+          view: 'Show'
+        index:
+          title: "Welcome to the %{engine_name}-Module"
+      dashboard:
+        dashboard_panel:
+          view: 'Show'
+        index:
+          title: "Welcome to the %{engine_name}-Module"
+      service:
+        base:
+          index:
+            back: 'Back'
+            invoke: "Execute"
+            title: "%{service_name}"
+          invoke:
+            back: 'Back'
+            title: "Execute %{service_name}"
+          success:
+            back: 'Back'
+            title: "Executed %{service_name}"
   layouts:
     itsf:
       backend:
         base:
-          title: "Backend"
-  table:
-    actions:
-      destroy: "Destroy"
-      edit: "Edit"
-      show: "Show"
-      title: "Actions"
+          title: "%{application_name}"
+  routes:
+    mount:
+      itsf_backend: '/backend'
+  simple_form:
+    labels:
+      q:
+        locale_eq: Locale equals

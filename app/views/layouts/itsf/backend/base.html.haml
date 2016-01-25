@@ -31,6 +31,8 @@
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
             = render 'layouts/itsf/backend/main_navigation'
+          %ul.nav.navbar-nav.pull-right
+            = render_i18n_navigation
           - if Itsf::Backend.features?(:ecm_user_area2)
             %ul.nav.navbar-nav.pull-right
               = render_user_navigation(dropdown: true)

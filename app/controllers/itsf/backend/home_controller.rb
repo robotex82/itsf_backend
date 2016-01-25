@@ -1,5 +1,7 @@
 module Itsf::Backend
   class HomeController < Configuration.home_base_controller.constantize
+    helper Itsf::Backend::ApplicationHelper
+
     if Itsf::Backend.features?(:pundit)
       include Pundit
       prepend Controller::PunditNamespacedAuthorizeConcern

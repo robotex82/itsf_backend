@@ -16,6 +16,7 @@ module Itsf::Backend
     include Controller::RansackConcern if Itsf::Backend.features?(:ransack)
     include Controller::PaginationConcern if Itsf::Backend.features?(:kaminari)
     include Controller::JsonApiConcern
+    helper Itsf::Backend::ApplicationHelper
     
     helper_method :resource_class
 

@@ -1,5 +1,7 @@
 module Itsf::Backend
   class DashboardController < Configuration.dashboard_base_controller.constantize
+    helper Itsf::Backend::ApplicationHelper
+    
     layout 'itsf/backend/base'
 
     if Itsf::Backend.features?(:pundit)

@@ -1,0 +1,9 @@
+%li.dropdown.active
+  = link_to('#', { class: 'dropdown-toggle', 'data-toggle': 'dropdown', role: 'button', 'aria-haspopup': true, 'aria-expanded': false }) do
+    = t("classes.#{I18n.name.underscore}")
+    %span.caret
+  %ul.dropdown-menu
+    - I18n.available_locales.reject{ |l| I18n.locale == l }.each do |locale|
+      %li{ class: (I18n.locale == locale ? 'active' : nil) }
+        = link_to(url_for(locale: locale)) do
+          = t("locales.#{locale}")

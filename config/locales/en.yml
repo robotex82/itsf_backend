@@ -17,6 +17,8 @@ en:
     'false': No
   confirmations:
     delete: "Are you sure?"
+  classes:
+    i18n: 'Language'
   flash:
     actions:
       create:
@@ -85,6 +87,8 @@ en:
       backend:
         base:
           title: "%{application_name}"
+  locales:
+    en: English
   routes:
     mount:
       itsf_backend: '/backend'

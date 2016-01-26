@@ -15,8 +15,14 @@ de:
   booleans:
     'true': Ja
     'false': Nein
+  cocoon:
+    defaults:
+      add: "Hinzufügen"
+      remove: "Entfernen"
   confirmations:
     delete: "Sind Sie sicher?"
+  classes:
+    i18n: 'Sprache'
   flash:
     actions:
       create:
@@ -85,6 +91,8 @@ de:
       backend:
         base:
           title: "%{application_name}"
+  locales:
+    de: Deutsch
   routes:
     mount:
       itsf_backend: '/backend'

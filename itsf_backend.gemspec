@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '>= 4.0'
   s.add_dependency 'ace-rails-ap'
+  s.add_dependency 'cocoon'
   s.add_dependency 'coffee-rails'
   s.add_dependency 'kaminari'
   s.add_dependency 'kaminari-i18n'

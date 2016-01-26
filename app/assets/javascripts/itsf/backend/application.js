@@ -15,6 +15,7 @@
 //= require jquery-ui
 //= require twitter/bootstrap
 //= require ace-rails-ap
+//= require cocoon
 //= require_tree ./vendor
 //= require_tree ./application
 //

@@ -1,5 +1,6 @@
 require 'ace-rails-ap'
 require 'coffee-rails'
+require 'cocoon'
 require 'kaminari'
 require 'kaminari-i18n'
 require 'bootstrap-kaminari-views'

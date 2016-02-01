@@ -1,6 +1,7 @@
 module Itsf::Backend
   class DashboardController < Configuration.dashboard_base_controller.constantize
     helper Itsf::Backend::ApplicationHelper
+    helper MultiClientHelper if Itsf::Backend.features?(:multi_client)
     
     layout 'itsf/backend/base'
 

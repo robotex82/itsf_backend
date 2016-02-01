@@ -17,6 +17,7 @@ module Itsf::Backend
     include Controller::PaginationConcern if Itsf::Backend.features?(:kaminari)
     include Controller::JsonApiConcern
     helper Itsf::Backend::ApplicationHelper
+    helper MultiClientHelper if Itsf::Backend.features?(:multi_client)
     
     helper_method :resource_class
 

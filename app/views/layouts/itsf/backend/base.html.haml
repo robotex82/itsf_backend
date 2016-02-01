@@ -36,6 +36,9 @@
           - if Itsf::Backend.features?(:ecm_user_area2)
             %ul.nav.navbar-nav.pull-right
               = render_user_navigation(dropdown: true)
+          - if Itsf::Backend.features?(:multi_client)
+            %ul.nav.navbar-nav.pull-right
+              = render_client_navigation   
 
     .container-fluid
       .row

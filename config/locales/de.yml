@@ -41,27 +41,6 @@ de:
   itsf_backend: "Backend"
   itsf:
     backend:
-      base:
-        edit:
-          back: "Zurück"
-          show: "Anzeigen"
-          title: "%{resource_name} bearbeiten"
-        index:
-          back: "Zurück"
-          new: "%{resource_name} hinzufügen"
-          title: "%{collection_name}"
-        new:
-          back: "Zurück"
-          title: "%{resource_name} erstellen"
-        show:
-          back: "Zurück"
-          destroy: "Löschen"
-          edit: "Bearbeiten"
-        table_actions:
-          destroy: "Löschen"
-          edit: "Bearbeiten"
-          show: "Anzeigen"
-          title: "Aktionen"
       home:
         dashboard_panel:
           back: "Zurück"
@@ -74,6 +53,28 @@ de:
           view: 'Anzeigen'
         index:
           title: "Willkommen im %{engine_name}-Modul"
+      resource:
+        base:
+          edit:
+            back: "Zurück"
+            show: "Anzeigen"
+            title: "%{resource_name} bearbeiten"
+          index:
+            back: "Zurück"
+            new: "%{resource_name} hinzufügen"
+            title: "%{collection_name}"
+          new:
+            back: "Zurück"
+            title: "%{resource_name} erstellen"
+          show:
+            back: "Zurück"
+            destroy: "Löschen"
+            edit: "Bearbeiten"
+          table_actions:
+            destroy: "Löschen"
+            edit: "Bearbeiten"
+            show: "Anzeigen"
+            title: "Aktionen"
       service:
         base:
           index:

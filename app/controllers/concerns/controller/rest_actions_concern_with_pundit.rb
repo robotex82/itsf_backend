@@ -9,7 +9,7 @@ module Controller
 
     def index
       if Itsf::Backend.features?(:ransack)
-        @q = collection_scope_with_search_scopes.ransack(params[:q])
+        @q = collection_scope_with_search_scopes(collection_scope).ransack(params[:q])
         @collection = @q.result.page(params[:page]).per(pagination_size)
       else
         @collection = collection_scope.page(params[:page]).per(pagination_size)

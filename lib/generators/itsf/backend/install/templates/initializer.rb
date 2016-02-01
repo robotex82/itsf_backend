@@ -24,12 +24,13 @@ Itsf::Backend.configure do |config|
   config.resource_base_controller = 'BackendController'
 
   # Register backend engines here. They will be  added to the backend menu
-  # 
-  # Example: config.backend_engines = -> {[ MyEngine::Engine ]}
-  # 
-  # Default: config.backend_engines = -> {[]}
-  # 
-  config.backend_engines = -> {[]}
+  #
+  # Example: config.backend_engines = %w( MyEngine::Engine ).map(&:constantize)
+  #
+  # Default: config.backend_engines = %w().map(&:constantize)
+  #
+  config.backend_engines = %w(
+  ).map(&:constantize)
 
   # Proc that will be used to build the backend title link. The first and only 
   # argument is the view.

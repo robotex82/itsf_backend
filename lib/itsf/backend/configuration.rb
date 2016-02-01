@@ -8,7 +8,7 @@ module Itsf
         yield self
       end
 
-      mattr_accessor(:backend_engines) { -> { [] } }
+      mattr_accessor(:backend_engines) { [] }
       mattr_accessor(:resource_base_controller) { '::ApplicationController' }
       mattr_accessor(:service_base_controller) { '::ApplicationController' }
       mattr_accessor(:dashboard_base_controller) { '::ApplicationController' }

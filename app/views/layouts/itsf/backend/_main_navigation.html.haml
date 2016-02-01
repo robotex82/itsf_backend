@@ -1,4 +1,4 @@
-- Itsf::Backend::Configuration.backend_engines.call.each do |engine|
+- Itsf::Backend::Configuration.backend_engines.each do |engine|
   - if !Itsf::Backend.features?(:pundit) || engine_policy(engine).access?
     - if request.original_url  =~ /#{main_app.send("#{engine.engine_name}_path")}/
       = render partial: 'layouts/itsf/backend/main_navigation_drop_down', locals: { engine: engine }

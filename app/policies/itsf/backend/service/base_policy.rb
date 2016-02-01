@@ -23,7 +23,7 @@ module Itsf::Backend
 
     def authorize_with_rbac(user, service_class, method_name)
       permission_identifier = "#{service_class.name.underscore}/#{method_name.to_s.chomp('?')}"
-      user.allowed_to? permission_identifier
+      user.respond_to?(:allowed_to?) ? user.allowed_to?(permission_identifier) : true
     end
   end
 end

@@ -2,3 +2,13 @@
   %h3= t('.title', engine_name: t("classes.#{engine.name.underscore}"))
 
 .col-lg-12= render 'dashboard_panel', engine: engine
+
+.col-lg-12= render 'index_extras', engine: engine
+
+.col-lg-12
+  .well.well-sm
+    .btn-container-right
+      - if main_app.respond_to?(:itsf_backend_path)
+        = link_to(main_app.itsf_backend_path, class: 'btn btn-default btn-responsive') do
+          %span.glyphicon.glyphicon-arrow-left
+          %span.btn-text= t('.back')

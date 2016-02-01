@@ -37,27 +37,6 @@ en:
   itsf_backend: "Backend"
   itsf:
     backend:
-      base:
-        edit:
-          back: "Back"
-          show: "Show"
-          title: "Edit %{resource_name}"
-        index:
-          back: "Back"
-          new: "New %{resource_name}"
-          title: "%{collection_name}"
-        new:
-          back: "Back"
-          title: "New %{resource_name}"
-        show:
-          back: "Back"
-          destroy: "Delete"
-          edit: "Edit"
-        table_actions:
-          destroy: "Delete"
-          edit: "Edit"
-          show: "Show"
-          title: "Actions"
       home:
         dashboard_panel:
           back: "Back"
@@ -70,6 +49,28 @@ en:
           view: 'Show'
         index:
           title: "Welcome to the %{engine_name}-Module"
+      resource:
+        base:
+          edit:
+            back: "Back"
+            show: "Show"
+            title: "Edit %{resource_name}"
+          index:
+            back: "Back"
+            new: "New %{resource_name}"
+            title: "%{collection_name}"
+          new:
+            back: "Back"
+            title: "New %{resource_name}"
+          show:
+            back: "Back"
+            destroy: "Delete"
+            edit: "Edit"
+          table_actions:
+            destroy: "Delete"
+            edit: "Edit"
+            show: "Show"
+            title: "Actions"
       service:
         base:
           index:

@@ -23,5 +23,4 @@ Generate the initializer:
   
   rails g itsf:backend:install
 
-
 This project rocks and uses MIT-LICENSE.

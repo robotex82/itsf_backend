@@ -7,10 +7,11 @@
     - if controllers.respond_to?(:call)
       - controllers = controllers.call
     - controllers.each do |kontroller|
+      - Rails.logger.info kontroller.inspect    
       - resource_klass = kontroller.resource_class
       - if !Itsf::Backend.features?(:pundit) || policy(resource_klass).index?
         %li{ class: (kontroller == controller.class ? 'active' : nil) }
-          = link_to(send(engine.engine_name).url_for(controller: kontroller.name.underscore.gsub('_controller', ''))) do
+          = link_to(send(engine.engine_name).url_for(controller: kontroller.controller_path)) do
             = resource_klass.model_name.human(count: :other)
             %span.label.label-default
               - if respond_to?(:current_user) && current_user.respond_to?(:last_sign_in_at) && resource_klass.respond_to?(:column_names) && resource_klass.column_names.include?('updated_at')

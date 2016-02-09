@@ -16,3 +16,4 @@
 !/spec/dummy/log/.keep
 /spec/dummy/tmp
 /spec/dummy/spring/
+/*.gem

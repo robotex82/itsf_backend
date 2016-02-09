@@ -17,6 +17,13 @@
     = favicon_link_tag 'itsf/backend/favicon.png', :rel => 'shortcut icon'
     = javascript_include_tag "itsf_backend"
 
+    - Itsf::Backend::Configuration.backend_engines.each do |engine|
+      = "<!-- Javascript for #{engine} -->".html_safe
+      = javascript_include_tag engine.name.underscore.gsub('/', '_').gsub('_engine', '')
+
+    - Itsf::Backend::Configuration.backend_engines.each do |engine|
+      = "<!-- CSS for #{engine} -->".html_safe
+      = stylesheet_link_tag engine.name.underscore.gsub('/', '_').gsub('_engine', ''), media: "all"
 
   %body
     .navbar.navbar-default.navbar-static-top

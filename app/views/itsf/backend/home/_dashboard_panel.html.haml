@@ -1,7 +1,7 @@
 .panel.panel-default
   .panel-heading
     .panel-title
-      = t("classes.#{engine.name.underscore}")
+      = t(".resources")
   %table.table.table-striped.table-hover.table-condensed
     - "#{engine.to_s.deconstantize}::Configuration".constantize.registered_controllers.call.each do |kontroller|
       %tr
@@ -13,7 +13,6 @@
             - else
               = kontroller.resource_class.count
         %td.text-right= link_to(t('.view'), { controller: kontroller.name.underscore.gsub('_controller', '') }, id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-index" ,class: 'btn btn-primary btn-xs')
-  .panel-footer
 
 
 .panel.panel-default

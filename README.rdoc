@@ -23,4 +23,21 @@ Generate the initializer:
   
   rails g itsf:backend:install
 
+= How do I register an engine to the backend?
+
+Add it to the initializer:
+
+    # config/initializers/001_itsf_backend.rb
+    config.backend_engines = %w(
+      Blorgh::Backend::Engine
+    ).map(&:constantize)
+
+= How do I add a home controller to a backend engine?
+
+Inside the engine root execute:
+
+    rails generate itsf:backend:home_controller Blorgh::Backend --skip-namespace
+
+= License
+
 This project rocks and uses MIT-LICENSE.

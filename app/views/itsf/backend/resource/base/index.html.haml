@@ -13,6 +13,10 @@
               %span.btn-text= t('.new', inflections)
 
 .panel.panel-default.panel-with-actions
+  - if Itsf::Backend.features?(:kaminari)
+    .panel-heading
+      .pull-right.col-xs-1
+        = select_tag(:per_page, options_for_select({ '1': 1, '5': 5, '10': 10, '15': 15, '20': 20, '50': 50, '100': 100, t('.all') => 'all' }, (params[:per_page] || Itsf::Backend::Configuration.default_pagination_size)), 'data-select-pagination-size': true, id: 'pagination-size', class: 'form-control input-xs')
   - if Itsf::Backend.features?(:ransack)
     .panel-body
       #filter
@@ -40,6 +44,8 @@
         .col-md-4
           .text-center= paginate @collection, theme: 'twitter-bootstrap-3'
         .col-md-4
+
+= render 'index_extras', collection: @collection
 
 .well.well-sm
   .btn-container-right

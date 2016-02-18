@@ -61,8 +61,10 @@ de:
             show: "Anzeigen"
             title: "%{resource_name} bearbeiten"
           index:
+            all: "Alle"
             back: "Zurück"
             new: "%{resource_name} hinzufügen"
+            reset_column_order: "Tabellenspalten zurücksetzen"
             title: "%{collection_name}"
           new:
             back: "Zurück"

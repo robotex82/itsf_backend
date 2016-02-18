@@ -15,8 +15,9 @@
 .panel.panel-default.panel-with-actions
   - if Itsf::Backend.features?(:kaminari)
     .panel-heading
-      .pull-right.col-xs-1
+      .pull-right.form-inline
         = select_tag(:per_page, options_for_select({ '1': 1, '5': 5, '10': 10, '15': 15, '20': 20, '50': 50, '100': 100, t('.all') => 'all' }, (params[:per_page] || Itsf::Backend::Configuration.default_pagination_size)), 'data-select-pagination-size': true, id: 'pagination-size', class: 'form-control input-xs')
+        = button_tag(t('.reset_column_order'), class: 'btn btn-default btn-xs', data: { 'reset-column-order': true})
   - if Itsf::Backend.features?(:ransack)
     .panel-body
       #filter
@@ -33,7 +34,7 @@
               = f.submit
               
   .table-responsive
-    = render_collection(@collection, resource_class, as: :bootstrap_table) do |table|
+    = render_collection(@collection, resource_class, as: :bootstrap_table, table_html_options: { class: 'table table-responsive table-condensed table-striped table-hover dragtable' }) do |table|
       = render 'table', table: table
       = render 'table_actions', table: table
 

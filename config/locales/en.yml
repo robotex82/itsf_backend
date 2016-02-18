@@ -15,6 +15,10 @@ en:
   booleans:
     'true': Yes
     'false': No
+  cocoon:
+    defaults:
+      add: "Add"
+      remove: "Remove"
   confirmations:
     delete: "Are you sure?"
   classes:
@@ -40,6 +44,7 @@ en:
       home:
         dashboard_panel:
           back: "Back"
+          resources: 'Resources'
           services: 'Services'
           view: 'Show'
         index:
@@ -56,8 +61,10 @@ en:
             show: "Show"
             title: "Edit %{resource_name}"
           index:
+            all: "All"
             back: "Back"
             new: "New %{resource_name}"
+            reset_column_order: "Reset column order"
             title: "%{collection_name}"
           new:
             back: "Back"

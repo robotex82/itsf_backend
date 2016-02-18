@@ -16,4 +16,5 @@ $ ->
 $ ->
   $('[data-reset-column-order]').on 'click', (e) ->
     window.sessionStorage.removeItem "column-order.#{window.location.pathname}"
+    window.location.reload()
     false

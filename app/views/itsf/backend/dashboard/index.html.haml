@@ -4,4 +4,3 @@
 - Itsf::Backend::Configuration.backend_engines.each do |engine|
   - if !Itsf::Backend.features?(:pundit) || engine_policy(engine).access?
     .col-lg-6= render 'dashboard_panel', engine: engine
-

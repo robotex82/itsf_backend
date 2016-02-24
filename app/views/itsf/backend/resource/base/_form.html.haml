@@ -1,2 +1,8 @@
 - resource_class.attribute_names.delete_if { |name| Itsf::Backend.hidden_attributes_for[:edit].include?(name.to_sym) }.each do |name|
-  = form.input name
+  - if form.object.class.columns_hash[name].type == :hstore
+    = simple_fields_for name do |hstore_form|
+      - if form.object.send(name).respond_to?(:each)
+        - form.object.send(name).each do |key, value|
+          = hstore_form.input key, input_html: { value: value }
+  - else
+    = form.input name

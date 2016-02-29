@@ -13,12 +13,15 @@
             - else
               = kontroller.resource_class.count
         %td.text-right
-          = link_to({ controller: kontroller.name.underscore.gsub('_controller', ''), action: 'new' }, id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-new", class: 'btn btn-success btn-xs btn-responsive') do
-            %span.glyphicon.glyphicon-plus
-            %span.btn-text= t('.new')
-          = link_to({ controller: kontroller.name.underscore.gsub('_controller', '') }, id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-index" ,class: 'btn btn-primary btn-xs btn-responsive') do
-            %span.glyphicon.glyphicon-eye-open
-            %span.btn-text= t('.view')
+          - begin
+            = link_to({ controller: kontroller.name.underscore.gsub('_controller', ''), action: 'new' }, id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-new", class: 'btn btn-success btn-xs btn-responsive') do
+              %span.glyphicon.glyphicon-plus
+              %span.btn-text= t('.new')
+
+            = link_to({ controller: kontroller.name.underscore.gsub('_controller', '') }, id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-index" ,class: 'btn btn-primary btn-xs btn-responsive') do
+              %span.glyphicon.glyphicon-eye-open
+              %span.btn-text= t('.view')
+          - rescue ActionController::UrlGenerationError
 
 
 .panel.panel-default

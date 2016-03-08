@@ -44,10 +44,12 @@ en:
       home:
         dashboard_panel:
           back: "Back"
+          new: 'New'
           resources: 'Resources'
           services: 'Services'
           view: 'Show'
         index:
+          back: "Back"
           title: "Welcome to the %{engine_name}-Module"
       dashboard:
         dashboard_panel:

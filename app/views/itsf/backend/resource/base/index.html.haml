@@ -7,10 +7,12 @@
     .col-xs-4
       #page-actions.btn-container-right
         .btn-group
-          - if !Itsf::Backend.features?(:pundit) || policy(resource_class).new?
-            = link_to new_resource_path, id: "link-to-#{controller.class.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-new", class: 'btn btn-success btn-responsive' do
-              %span.glyphicon.glyphicon-plus
-              %span.btn-text= t('.new', inflections)
+          - begin
+            - if !Itsf::Backend.features?(:pundit) || policy(resource_class).new?
+              = link_to new_resource_path, id: "link-to-#{controller.class.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-new", class: 'btn btn-success btn-responsive' do
+                %span.glyphicon.glyphicon-plus
+                %span.btn-text= t('.new', inflections)
+          - rescue ActionController::UrlGenerationError
 
 .panel.panel-default.panel-with-actions
   - if Itsf::Backend.features?(:kaminari)

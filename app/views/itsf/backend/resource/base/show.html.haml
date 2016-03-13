@@ -20,13 +20,15 @@
 = render 'show_extras', resource: @resource
 
 .well.well-sm
-  - begin
-    = link_to(edit_resource_path(@resource), class: 'btn btn-primary btn-responsive') do
-      %span.glyphicon.glyphicon-pencil
-      %span.btn-text= t('.edit')
-  - rescue ActionController::UrlGenerationError
-  - begin
-    = link_to collection_path, class: 'btn btn-default btn-responsive pull-right' do
-      %span.glyphicon.glyphicon-arrow-left
-      %span.btn-text= t('.back')
-  - rescue ActionController::UrlGenerationError
+  .clearfix
+    - begin
+      = link_to collection_path, class: 'btn btn-default btn-responsive pull-right' do
+        %span.glyphicon.glyphicon-arrow-left
+        %span.btn-text= t('.back')
+    - rescue ActionController::UrlGenerationError
+    - begin
+      = link_to(edit_resource_path(@resource), class: 'btn btn-primary btn-responsive') do
+        %span.glyphicon.glyphicon-pencil
+        %span.btn-text= t('.edit')
+    - rescue ActionController::UrlGenerationError
+

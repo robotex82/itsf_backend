@@ -45,6 +45,7 @@ de:
         dashboard_panel:
           back: "Zurück"
           new: "Hinzufügen"
+          invoke: "Ausführen"
           resources: 'Resourcen'
           services: 'Dienste'
           view: 'Anzeigen'

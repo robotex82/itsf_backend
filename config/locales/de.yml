@@ -37,7 +37,12 @@ de:
           notice: "%{resource_name} veröffentlicht."
         unpublished:
           notice: "%{resource_name} zurückgezogen."
-
+  helpers:
+    submit:
+      create_and_continue_with_edit: "%{resource_name} erstellen und weiter bearbeiten"
+      create_and_continue_with_new: "%{resource_name} erstellen und neu"
+      update_and_continue_with_edit: "%{resource_name} aktualisieren und weiter bearbeiten"
+      update_and_continue_with_new: "%{resource_name} aktualisieren und neu"
   itsf_backend: "Backend"
   itsf:
     backend:

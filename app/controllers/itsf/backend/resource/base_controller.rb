@@ -32,5 +32,19 @@ module Itsf::Backend
     def resource_class
       self.class.resource_class
     end
+
+    private
+
+    def after_create_location
+      return edit_resource_path(@resource) if params.has_key?(:commit_and_continue_with_edit)
+      return new_resource_path if params.has_key?(:commit_and_continue_with_new)
+      collection_path  
+    end
+
+    def after_update_location
+      return edit_resource_path(@resource) if params.has_key?(:commit_and_continue_with_edit)
+      return new_resource_path if params.has_key?(:commit_and_continue_with_new)
+      collection_path  
+    end
   end
 end

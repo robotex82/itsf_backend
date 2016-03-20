@@ -28,7 +28,7 @@ module Controller
       @resource = resource_class.new(permitted_params)
       authorize_action
       @resource.save
-      respond_with @resource, location: collection_path
+      respond_with @resource, location: after_create_location
     end
 
     def show
@@ -47,17 +47,29 @@ module Controller
       @resource = load_resource
       authorize_action
       @resource.update_attributes(permitted_params)
-      respond_with @resource, location: collection_path
+      respond_with @resource, location: after_update_location
     end
 
     def destroy
       @resource = load_resource
       authorize_action
       @resource.destroy
-      respond_with @resource, location: collection_path
+      respond_with @resource, location: after_destroy_location
     end
 
     private
+
+    def after_create_location
+      collection_path
+    end
+
+    def after_destroy_location
+      collection_path
+    end
+
+    def after_update_location
+      collection_path
+    end
 
     def authorize_action
       action = action_name.to_sym

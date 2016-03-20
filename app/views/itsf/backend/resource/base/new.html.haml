@@ -6,6 +6,8 @@
       = render partial: 'form_errors', locals: { resource: f.object }
       = render 'form', form: f
       = f.button :submit, class: 'btn btn-success'
+      = f.button :submit_and_continue_with_edit, class: 'btn btn-success'
+      = f.button :submit_and_continue_with_new, class: 'btn btn-success'
   %div.panel-footer
 
 .well.well-sm

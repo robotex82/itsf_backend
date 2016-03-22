@@ -7,6 +7,7 @@ module Controller
       responders :flash
     end
 
+    
     def index
       if Itsf::Backend.features?(:ransack)
         @q = collection_scope_with_search_scopes(collection_scope).ransack(params[:q])
@@ -19,7 +20,7 @@ module Controller
     end
 
     def new
-      @resource = resource_class.new
+      @resource = initialize_resource
       authorize_action
       respond_with @resource
     end
@@ -57,6 +58,7 @@ module Controller
       respond_with @resource, location: after_destroy_location
     end
 
+
     private
 
     def after_create_location
@@ -91,6 +93,10 @@ module Controller
 
     def collection_scope
       resource_class
+    end
+
+    def initialize_resource
+      resource_class.new
     end
 
     def load_resource

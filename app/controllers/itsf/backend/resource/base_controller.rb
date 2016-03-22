@@ -7,6 +7,7 @@ module Itsf::Backend
       include Controller::RestActionsConcernWithPundit
       include Pundit
       prepend Controller::PunditNamespacedAuthorizeConcern
+      include Controller::PunditAuthorizationFailureHandlingConcern
       helper_method :engine_policy
     else
       include Controller::RestActionsConcern

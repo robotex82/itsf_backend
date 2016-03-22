@@ -6,6 +6,7 @@ module Itsf::Backend
     if Itsf::Backend.features?(:pundit)
       include Pundit
       prepend Controller::PunditNamespacedAuthorizeConcern
+      include Controller::PunditAuthorizationFailureHandlingConcern
       helper_method :engine_policy
     end
 

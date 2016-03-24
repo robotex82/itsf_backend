@@ -1,4 +1,4 @@
-class <%= controller_name %> < Itsf::Backend::BaseController
+class <%= controller_name %> < Itsf::Backend::Resource::BaseController
   def self.resource_class
     # Set the resource class here.
     #

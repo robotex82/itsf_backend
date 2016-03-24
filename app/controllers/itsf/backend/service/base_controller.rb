@@ -6,6 +6,7 @@ module Itsf::Backend
     if Itsf::Backend.features?(:pundit)
       include Pundit
       include Controller::PunditNamespacedAuthorizeConcern 
+      include Controller::PunditAuthorizationFailureHandlingConcern
     end
 
     include Controller::ServiceInflectionsConcern

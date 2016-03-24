@@ -17,11 +17,17 @@ Itsf::Backend.configure do |config|
   #
   config.home_base_controller = 'BackendController'
 
-  # Set the base controller for resouce controllers
+  # Set the base controller for resource controllers
   #
   # Default: config.resource_base_controller = 'BackendController'
   #
   config.resource_base_controller = 'BackendController'
+
+  # Set the base controller for service controllers
+  #
+  # Default: config.service_base_controller = 'BackendController'
+  #
+  config.service_base_controller = 'BackendController'
 
   # Register backend engines here. They will be  added to the backend menu
   #

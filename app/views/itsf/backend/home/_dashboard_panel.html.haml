@@ -4,26 +4,27 @@
       = t(".resources")
   %table.table.table-striped.table-hover.table-condensed
     - "#{engine.to_s.deconstantize}::Configuration".constantize.registered_controllers.call.each do |kontroller|
-      %tr
-        %th.col-md-3= kontroller.resource_class.model_name.human(count: :other)
-        %td.text-left
-          %span.label.label-default
-            - if respond_to?(:current_user) && current_user.respond_to?(:last_sign_in_at) && kontroller.resource_class.respond_to?(:column_names) && kontroller.resource_class.column_names.include?('updated_at')
-              = "#{kontroller.resource_class.where("updated_at > ?", current_user.last_sign_in_at).count}/#{kontroller.resource_class.count}"
-            - else
-              = kontroller.resource_class.count
-        %td.text-right
-          - begin
-            = link_to({ controller: kontroller.name.underscore.gsub('_controller', ''), action: 'new' }, id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-new", class: 'btn btn-success btn-xs btn-responsive') do
-              %span.glyphicon.glyphicon-plus
-              %span.btn-text= t('.new')
-          - rescue ActionController::UrlGenerationError
+      - if !Itsf::Backend.features?(:pundit) || policy(kontroller.resource_class).index?
+        %tr
+          %th.col-md-3= kontroller.resource_class.model_name.human(count: :other)
+          %td.text-left
+            %span.label.label-default
+              - if respond_to?(:current_user) && current_user.respond_to?(:last_sign_in_at) && kontroller.resource_class.respond_to?(:column_names) && kontroller.resource_class.column_names.include?('updated_at')
+                = "#{kontroller.resource_class.where("updated_at > ?", current_user.last_sign_in_at).count}/#{kontroller.resource_class.count}"
+              - else
+                = kontroller.resource_class.count
+          %td.text-right
+            - begin
+              = link_to({ controller: kontroller.name.underscore.gsub('_controller', ''), action: 'new' }, id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-new", class: 'btn btn-success btn-xs btn-responsive') do
+                %span.glyphicon.glyphicon-plus
+                %span.btn-text= t('.new')
+            - rescue ActionController::UrlGenerationError
 
-          - begin
-            = link_to({ controller: kontroller.name.underscore.gsub('_controller', '') }, id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-index" ,class: 'btn btn-primary btn-xs btn-responsive') do
-              %span.glyphicon.glyphicon-eye-open
-              %span.btn-text= t('.view')
-          - rescue ActionController::UrlGenerationError
+            - begin
+              = link_to({ controller: kontroller.name.underscore.gsub('_controller', '') }, id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-index" ,class: 'btn btn-primary btn-xs btn-responsive') do
+                %span.glyphicon.glyphicon-eye-open
+                %span.btn-text= t('.view')
+            - rescue ActionController::UrlGenerationError
 
 
 .panel.panel-default

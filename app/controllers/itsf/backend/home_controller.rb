@@ -3,11 +3,20 @@ module Itsf::Backend
     helper Itsf::Backend::ApplicationHelper
     helper MultiClientHelper if Itsf::Backend.features?(:multi_client)
 
+    def index
+    end
+
     if Itsf::Backend.features?(:pundit)
       include Pundit
       prepend Controller::PunditNamespacedAuthorizeConcern
       include Controller::PunditAuthorizationFailureHandlingConcern
       helper_method :engine_policy
+
+      after_action :verify_authorized
+
+      def index
+        authorize :engine, :access?, self.class.name.deconstantize
+      end
     end
 
     layout 'itsf/backend/base'
@@ -20,9 +29,6 @@ module Itsf::Backend
 
     def engine
       self.class.engine
-    end
-
-    def index
     end
   end
 end

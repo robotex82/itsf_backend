@@ -13,7 +13,8 @@ module Itsf::Backend
     end
 
     def show?
-      scope.where(id: record.id).exists?
+      # scope.where(id: record.id).exists?
+       authorize_with_rbac(user, record, __method__)
     end
 
     def create?

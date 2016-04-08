@@ -26,33 +26,24 @@
       = "<!-- CSS for #{engine} -->".html_safe
       = stylesheet_link_tag engine.name.underscore.gsub('/', '_').gsub('_engine', ''), media: "all"
 
-  %body
+  %body{ class: Itsf::Backend::Configuration.main_navigation_style.eql?(:vertical) ? 'p-t-2' : nil }
     - if Itsf::Backend::Configuration.main_navigation_style.eql? :horizontal
-      .navbar.navbar-default.navbar-static-top
+      #main-navigation.navbar.navbar-default.navbar-static-top
         .container-fluid
-          %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          #navigation-logo.pull-left
-            = render 'layouts/itsf/backend/logo'
-          = Itsf::Backend::Configuration.title_link.call(self)
-          .navbar-collapse.collapse.navbar-responsive-collapse
-            %ul.nav.navbar-nav
-              = render 'layouts/itsf/backend/main_navigation'
-            %ul.nav.navbar-nav.pull-right
-              = render_i18n_navigation
-            - if respond_to?(:render_user_navigation)
-              %ul.nav.navbar-nav.pull-right
-                = render_user_navigation(dropdown: true)
-            - if Itsf::Backend.features?(:multi_client)
-              %ul.nav.navbar-nav.pull-right
-                = render_client_navigation   
+          = render 'layouts/itsf/backend/main_navigation'
 
     .container-fluid
       .row
-        .col-lg-12
-          = bootstrap_flash
-          = yield
+        - if Itsf::Backend::Configuration.main_navigation_style.eql? :horizontal
+          .col-md-12
+            = bootstrap_flash
+            = yield
+        - else
+          .col-md-3
+            #main-navigation.sidebar-nav.navbar.navbar-default
+              = render 'layouts/itsf/backend/main_navigation'
+          .col-md-9
+            = bootstrap_flash
+            = yield
       %footer
         = render 'layouts/itsf/backend/footer'

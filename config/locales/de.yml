@@ -56,12 +56,12 @@ de:
           view: 'Anzeigen'
         index:
           back: "Zurück"
-          title: "Willkommen im %{engine_name}-Modul"
+          title: "Willkommen im Modul für %{engine_name}"
       dashboard:
         dashboard_panel:
           view: 'Anzeigen'
         index:
-          title: "Willkommen im %{engine_name}-Modul"
+          title: "Willkommen im Modul für %{engine_name}"
       resource:
         base:
           edit:
@@ -102,6 +102,8 @@ de:
     itsf:
       backend:
         base:
+          title: "%{application_name}"
+        main_navigation:
           title: "%{application_name}"
   locales:
     de: Deutsch

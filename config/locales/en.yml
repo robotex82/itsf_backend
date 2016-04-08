@@ -95,7 +95,7 @@ en:
   layouts:
     itsf:
       backend:
-        base:
+        main_navigation:
           title: "%{application_name}"
   locales:
     en: English

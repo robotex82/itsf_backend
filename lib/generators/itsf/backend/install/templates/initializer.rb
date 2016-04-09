@@ -1,9 +1,11 @@
 Itsf::Backend.configure do |config|
-  # Manually disable features
+  # Manually enable features.
   # 
-  # Default: config.disabled_features: []
-  # 
-  config.disabled_features = []
+  # Options: kaminari, :pundit, :ransack
+  #
+  # Default: config.enabled_features: []
+  #
+  config.enabled_features = [:kaminari]
   
   # Set the base controller the backend dashboards
   #

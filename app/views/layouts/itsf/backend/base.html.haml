@@ -34,7 +34,7 @@
 
     .container-fluid
       .row
-        - if Itsf::Backend::Configuration.main_navigation_style.eql? :horizontal
+        - if Itsf::Backend::Configuration.main_navigation_style.eql? :vertical
           .col-md-12
             = bootstrap_flash
             = yield

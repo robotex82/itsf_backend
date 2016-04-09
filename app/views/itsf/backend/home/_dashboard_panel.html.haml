@@ -15,17 +15,18 @@
                 - else
                   = kontroller.resource_class.count
             %td.text-right
-              - begin
-                = link_to({ controller: kontroller.name.underscore.gsub('_controller', ''), action: 'new' }, id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-new", class: 'btn btn-success btn-xs btn-responsive') do
-                  %span.glyphicon.glyphicon-plus
-                  %span.btn-text= t('.new')
-              - rescue ActionController::UrlGenerationError
+              .btn-group
+                - begin
+                  = link_to({ controller: kontroller.name.underscore.gsub('_controller', ''), action: 'new' }, id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-new", class: 'btn btn-success btn-xs btn-responsive') do
+                    %span.glyphicon.glyphicon-plus
+                    %span.btn-text= t('.new')
+                - rescue ActionController::UrlGenerationError
 
-              - begin
-                = link_to({ controller: kontroller.name.underscore.gsub('_controller', '') }, id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-index" ,class: 'btn btn-primary btn-xs btn-responsive') do
-                  %span.glyphicon.glyphicon-eye-open
-                  %span.btn-text= t('.view')
-              - rescue ActionController::UrlGenerationError
+                - begin
+                  = link_to({ controller: kontroller.name.underscore.gsub('_controller', '') }, id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-index" ,class: 'btn btn-primary btn-xs btn-responsive') do
+                    %span.glyphicon.glyphicon-eye-open
+                    %span.btn-text= t('.view')
+                - rescue ActionController::UrlGenerationError
 
 
 - if "#{engine.to_s.deconstantize}::Configuration".constantize.registered_services.call.any?
@@ -38,9 +39,10 @@
         %tr
           %th.col-md-3= t("classes.#{kontroller.service_class.name.underscore}")
           %td.text-right
-            = link_to({ controller: kontroller.name.underscore.gsub('_controller', ''), action: 'invoke' }, { id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-invoke", class: 'btn btn-success btn-xs btn-responsive' }) do
-              %span.glyphicon.glyphicon-play-circle
-              %span.btn-text= t('.invoke')
-            = link_to({ controller: kontroller.name.underscore.gsub('_controller', '') }, { id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-index", class: 'btn btn-primary btn-xs btn-responsive' }) do
-              %span.glyphicon.glyphicon-eye-open
-              %span.btn-text= t('.view')
+            .btn-group
+              = link_to({ controller: kontroller.name.underscore.gsub('_controller', ''), action: 'invoke' }, { id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-invoke", class: 'btn btn-success btn-xs btn-responsive' }) do
+                %span.glyphicon.glyphicon-play-circle
+                %span.btn-text= t('.invoke')
+              = link_to({ controller: kontroller.name.underscore.gsub('_controller', '') }, { id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-index", class: 'btn btn-primary btn-xs btn-responsive' }) do
+                %span.glyphicon.glyphicon-eye-open
+                %span.btn-text= t('.view')

@@ -100,4 +100,13 @@ Itsf::Backend.configure do |config|
   # Default config.default_pagination_size = 15
   # 
   config.default_pagination_size = 15
+
+  # Sets the main navigation style. By default, there are two styles:
+  # 
+  #   * horizontal
+  #   * vertical
+  #   
+  #  Default: config.main_navigation_style = :horizontal
+  # 
+  config.main_navigation_style = :vertical
 end

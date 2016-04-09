@@ -6,9 +6,10 @@
       %h1= @resource.try_all(*Itsf::Backend::Configuration.resource_title_methods)
     .col-xs-4
       #page-actions.btn-container-right
-        = link_to(resource_path(@resource), method: :delete, class: 'btn btn-danger btn-responsive', 'data-confirm': I18n.t('confirmations.delete')) do
-          %span.glyphicon.glyphicon-fire
-          %span.btn-text= t('.destroy')
+        - if !Itsf::Backend.features?(:pundit) || policy(resource_class).destroy?
+          = link_to(resource_path(@resource), method: :delete, class: 'btn btn-danger btn-responsive', 'data-confirm': I18n.t('confirmations.delete')) do
+            %span.glyphicon.glyphicon-fire
+            %span.btn-text= t('.destroy')
 
 .panel.panel-default.panel-with-actions
   %table.table.table-striped.table-condensed.table-hover
@@ -27,8 +28,9 @@
         %span.btn-text= t('.back')
     - rescue ActionController::UrlGenerationError
     - begin
-      = link_to(edit_resource_path(@resource), class: 'btn btn-primary btn-responsive') do
-        %span.glyphicon.glyphicon-pencil
-        %span.btn-text= t('.edit')
+      - if !Itsf::Backend.features?(:pundit) || policy(resource_class).edit?
+        = link_to(edit_resource_path(@resource), class: 'btn btn-primary btn-responsive') do
+          %span.glyphicon.glyphicon-pencil
+          %span.btn-text= t('.edit')
     - rescue ActionController::UrlGenerationError
 

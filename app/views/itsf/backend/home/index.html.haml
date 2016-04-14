@@ -1,5 +1,6 @@
 #page-title.bottom-margin-1
-  %h3= t('.title', engine_name: t("classes.#{engine.name.underscore}"))
+  .col-lg-12
+    %h3= t('.title', engine_name: t("classes.#{engine.name.underscore}"))
 
 .col-lg-12= render 'dashboard_panel', engine: engine
 

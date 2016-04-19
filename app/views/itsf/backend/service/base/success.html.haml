@@ -6,6 +6,9 @@
     = render partial: 'messages', locals: { messages: @response.messages }
 
   %div.panel-footer
+
+= render 'success_extras', service_response: @response
+
 .well.well-sm
   .btn-container-right
     = link_to collection_path, class: 'btn btn-default btn-responsive' do

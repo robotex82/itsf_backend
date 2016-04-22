@@ -1,5 +1,5 @@
 $ ->
-  $('textarea[data-add-editor]').each ->
+  $("textarea[data-add-editor='true']").each ->
     textarea = @
 
     # Create css id based on the text area id
@@ -25,7 +25,7 @@ $ ->
     )
     
 $ ->
-  $('pre[data-add-editor]').each ->
+  $("pre[data-add-editor='true']").each ->
     container = @
 
     # Create css id based on the container id

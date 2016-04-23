@@ -108,6 +108,8 @@ de:
           title: "%{application_name}"
   locales:
     de: Deutsch
+  ransack:
+    reset: 'Zurücksetzen'
   routes:
     mount:
       itsf_backend: '/backend'

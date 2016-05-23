@@ -16,6 +16,10 @@
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
     = favicon_link_tag 'itsf/backend/favicon.png', :rel => 'shortcut icon'
     = javascript_include_tag "itsf_backend"
+
+    / layouts/itsf/backend/head_extras
+    = render 'layouts/itsf/backend/head_extras'
+    / head_extras
     = render 'head_extras'
 
     - Itsf::Backend::Configuration.backend_engines.each do |engine|

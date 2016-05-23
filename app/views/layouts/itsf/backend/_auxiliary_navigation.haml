@@ -1,0 +1,14 @@
+%button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
+  %span.icon-bar
+  %span.icon-bar
+  %span.icon-bar
+
+.navbar-collapse.collapse.navbar-responsive-collapse
+  %ul.nav.navbar-nav.pull-right
+    = render_i18n_navigation
+  - if respond_to?(:render_user_navigation)
+    %ul.nav.navbar-nav.pull-right
+      = render_user_navigation(dropdown: true)
+  - if Itsf::Backend.features?(:multi_client)
+    %ul.nav.navbar-nav.pull-right
+      = render_client_navigation   

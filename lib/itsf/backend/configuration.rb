@@ -21,7 +21,6 @@ module Itsf
         { index: [], show: [], edit: [] }
       end
       mattr_accessor(:default_pagination_size) { 15 }
-      mattr_accessor(:main_navigation_style) { :horizontal }
 
       def registered_controllers
         backend_engines.call.collect do |engine|

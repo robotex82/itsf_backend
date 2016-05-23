@@ -106,6 +106,9 @@ de:
           title: "%{application_name}"
         main_navigation:
           title: "%{application_name}"
+        vertical_navigation:
+          home: "Home"
+          title: "%{application_name}"
   locales:
     de: Deutsch
   ransack:

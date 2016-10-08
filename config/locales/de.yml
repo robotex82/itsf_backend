@@ -7,10 +7,13 @@ de:
   acts_as_list:
     inserted_after: "%{inserted_resource} nach %{target_resource} eingefügt"
     inserted_before: "%{inserted_resource} vor %{target_resource} eingefügt"
+  awesome_nested_set:
+    inserted_after: "%{inserted_resource} nach %{target_resource} eingefügt"
   attributes:
     actions: 'Aktionen'
     acts_as_list_actions: 'Liste'
     acts_as_published_actions: 'Veröffentlichung'
+    awesome_nested_set_actions: 'Baum'
     published: Veröffentlicht?
   booleans:
     'true': Ja

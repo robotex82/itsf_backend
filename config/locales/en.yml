@@ -11,6 +11,7 @@ en:
     actions: 'Actions'
     acts_as_list_actions: 'List'
     acts_as_published_actions: 'Publishing'
+    awesome_nested_set_actions: 'Tree'
     published: Published?
   booleans:
     'true': Yes
@@ -37,7 +38,13 @@ en:
           notice: "Published %{resource_name}."
         unpublished:
           notice: "Unpublished %{resource_name}."
-
+  helpers:
+    submit:
+      call: "%{model} ausführen"
+      create_and_continue_with_edit: "Create%{resource_name} and continue editing"
+      create_and_continue_with_new: "Create %{resource_name} and add another one"
+      update_and_continue_with_edit: "Update %{resource_name} and continue editing"
+      update_and_continue_with_new: "Update %{resource_name} and add another one"
   itsf_backend: "Backend"
   itsf:
     backend:

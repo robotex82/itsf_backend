@@ -17,6 +17,7 @@ module Itsf::Backend
     include Controller::RansackConcern if Itsf::Backend.features?(:ransack)
     include Controller::PaginationConcern if Itsf::Backend.features?(:kaminari)
     include Controller::JsonApiConcern
+    include Controller::FeatureFlagsConcern
     helper Itsf::Backend::ApplicationHelper
     helper MultiClientHelper if Itsf::Backend.features?(:multi_client)
     

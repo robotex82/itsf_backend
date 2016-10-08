@@ -3,24 +3,24 @@
     .col-xs-8
       %h1
         = t('.title', inflections)
-        %span.label.label-default= Itsf::Backend.features?(:kaminari) ? "#{@collection.total_count}/#{resource_class.count}" : @collection.count
+        %span.label.label-default= features?(:kaminari) ? "#{@collection.total_count}/#{resource_class.count}" : @collection.count
     .col-xs-4
       #page-actions.btn-container-right
         .btn-group
           - begin
-            - if !Itsf::Backend.features?(:pundit) || policy(resource_class).new?
+            - if !features?(:pundit) || policy(resource_class).new?
               = link_to new_resource_path, id: "link-to-#{controller.class.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-new", class: 'btn btn-success btn-responsive' do
                 %span.glyphicon.glyphicon-plus
                 %span.btn-text= t('.new', inflections)
           - rescue ActionController::UrlGenerationError
 
 .panel.panel-default.panel-with-actions
-  - if Itsf::Backend.features?(:kaminari)
+  - if features?(:kaminari)
     .panel-heading
       .pull-right.form-inline
         = select_tag(:per_page, options_for_select({ '1': 1, '5': 5, '10': 10, '15': 15, '20': 20, '50': 50, '100': 100, t('.all') => 'all' }, (params[:per_page] || Itsf::Backend::Configuration.default_pagination_size)), 'data-select-pagination-size': true, id: 'pagination-size', class: 'form-control input-xs')
         = button_tag(t('.reset_column_order'), class: 'btn btn-default btn-xs', data: { 'reset-column-order': true})
-  - if Itsf::Backend.features?(:ransack)
+  - if features?(:ransack)
     .panel-body
       #filter
         = search_form_for(@q, url: collection_path, class: 'form-inline', html: { 'data-auto-submit': true }) do |f|
@@ -41,7 +41,7 @@
       = render 'table_actions', table: table
 
   .panel-footer
-    - if Itsf::Backend.features?(:kaminari)
+    - if features?(:kaminari)
       .row
         .col-md-4
         .col-md-4

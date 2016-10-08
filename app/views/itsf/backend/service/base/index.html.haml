@@ -6,7 +6,7 @@
     .col-xs-4
       #page-actions.btn-container-right
         .btn-group
-          - if !Itsf::Backend.features?(:pundit) || policy(service_class).invoke?
+          - if !features?(:pundit) || policy(service_class).invoke?
             = link_to invoke_service_path, id: "link-to-#{controller.class.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-new", class: 'btn btn-success btn-responsive' do
               %span.glyphicon.glyphicon-play-circle
               %span.btn-text= t('.invoke', inflections)

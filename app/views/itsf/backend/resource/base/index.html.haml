@@ -14,11 +14,15 @@
                 %span.btn-text= t('.new', inflections)
           - rescue ActionController::UrlGenerationError
 
+#collection-pages-naviation.bottom-margin-1
+  = render 'collection_pages_navigation', collection: @collection
+
 .panel.panel-default.panel-with-actions
-  - if features?(:kaminari)
-    .panel-heading
-      .pull-right.form-inline
+  .panel-heading
+    .pull-right.form-inline
+      - if features?(:kaminari)
         = select_tag(:per_page, options_for_select({ '1': 1, '5': 5, '10': 10, '15': 15, '20': 20, '50': 50, '100': 100, t('.all') => 'all' }, (params[:per_page] || Itsf::Backend::Configuration.default_pagination_size)), 'data-select-pagination-size': true, id: 'pagination-size', class: 'form-control input-xs')
+      - if features?(:dragtable)
         = button_tag(t('.reset_column_order'), class: 'btn btn-default btn-xs', data: { 'reset-column-order': true})
   - if features?(:ransack)
     .panel-body
@@ -36,7 +40,9 @@
               = f.submit
               
   .table-responsive
-    = render_collection(@collection, resource_class, as: :bootstrap_table, table_html_options: { class: 'table table-responsive table-condensed table-striped table-hover dragtable' }) do |table|
+    - table_classes = %w(table table-responsive table-condensed table-striped table-hover)
+    - table_classes << 'dragtable' if features?(:dragtable)
+    = render_collection(@collection, resource_class, as: :bootstrap_table, table_html_options: { class: table_classes.join(" ") }) do |table|
       = render 'table', table: table
       = render 'table_actions', table: table
 

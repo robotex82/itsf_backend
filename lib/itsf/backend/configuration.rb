@@ -21,6 +21,9 @@ module Itsf
         { index: [], show: [], edit: [] }
       end
       mattr_accessor(:default_pagination_size) { 15 }
+      mattr_accessor(:resource_links) { [] }
+      mattr_accessor(:collection_links) { [] }
+      mattr_accessor(:additional_resource_route_blocks) { [] }
 
       def registered_controllers
         backend_engines.call.collect do |engine|

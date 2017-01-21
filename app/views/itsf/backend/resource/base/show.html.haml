@@ -1,5 +1,8 @@
 %p#notice= notice
 
+#resource-pages-naviation.bottom-margin-1
+  = render 'resource_pages_navigation', resource: @resource
+
 #page-title.bottom-margin-1
   .row
     .col-xs-8
@@ -10,6 +13,8 @@
           = link_to(resource_path(@resource), method: :delete, class: 'btn btn-danger btn-responsive', 'data-confirm': I18n.t('confirmations.delete')) do
             %span.glyphicon.glyphicon-fire
             %span.btn-text= t('.destroy')
+
+= render 'show_extra_actions', resource: @resource
 
 .panel.panel-default.panel-with-actions
   %table.table.table-striped.table-condensed.table-hover

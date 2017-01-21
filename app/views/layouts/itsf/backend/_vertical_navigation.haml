@@ -17,5 +17,5 @@
                 - if !Itsf::Backend.features?(:pundit) || policy(resource_klass).index?
                   = link_to(send(engine.engine_name).url_for(controller: "/#{kontroller.controller_path}"), class: 'list-group-item') do
                     = resource_klass.model_name.human(count: :other)
-                    %span.badge.badge-default= resource_klass.count
+                    %span.badge.badge-default= kontroller.resource_count.respond_to?(:call) ? instance_exec(&kontroller.resource_count) : kontroller.resource_count
 

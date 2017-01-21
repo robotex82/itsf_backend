@@ -81,6 +81,8 @@ de:
           new:
             back: "Zurück"
             title: "%{resource_name} erstellen"
+          resource_pages_navigation:
+            show: 'Details'
           show:
             back: "Zurück"
             destroy: "Löschen"

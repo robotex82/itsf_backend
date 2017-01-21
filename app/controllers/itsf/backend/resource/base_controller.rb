@@ -18,6 +18,8 @@ module Itsf::Backend
     include Controller::PaginationConcern if Itsf::Backend.features?(:kaminari)
     include Controller::JsonApiConcern
     include Controller::FeatureFlagsConcern
+    include Controller::ResourceLinksConcern
+    include Controller::CollectionLinksConcern
     helper Itsf::Backend::ApplicationHelper
     helper MultiClientHelper if Itsf::Backend.features?(:multi_client)
     
@@ -30,6 +32,10 @@ module Itsf::Backend
     def self.resource_class
       name.gsub('Controller', '').singularize.constantize
     end
+
+      def self.resource_count
+        resource_class.count
+      end
 
     def resource_class
       self.class.resource_class

@@ -1,0 +1,10 @@
+%ul.nav.nav-tabs
+  - resource_links.each do |resource_link|
+    - if resource_link[:condition].call(self)
+      - if current_page? resource_link[:target].call(self)
+        %li.active{ role: :presentation }
+          = resource_link[:link_to].call(self)
+      - else
+        %li{ role: :presentation }
+          = resource_link[:link_to].call(self)
+  = render 'additional_resource_tabs', resource: resource

@@ -1,0 +1,25 @@
+- if features?(:audited)
+  .well.well-sm
+    - if @resource.version.nil?
+      - previous_version = @resource.audits.last.try(:version)
+      - next_version = nil
+    - else
+      - previous_version = @resource.version > 0 ? @resource.version - 1 : nil
+      - next_version     = @resource.version < @resource.audits.count ? @resource.version + 1 : nil
+
+
+    - if previous_version
+      = link_to(url_for(action: 'version', version: previous_version), class: 'btn btn-primary btn-responsive') do
+        %span.glyphicon.glyphicon-chevron-left
+        %span.btn-text= t('.previous')
+
+    .pull-right
+      - if next_version
+        = link_to(url_for(action: 'version', version: next_version), class: 'btn btn-primary btn-responsive') do
+          %span.glyphicon.glyphicon-chevron-right
+          %span.btn-text= t('.next')
+
+      - if @resource.version == @resource.audits.count
+        = link_to(url_for(action: :show), class: 'btn btn-primary btn-responsive') do
+          %span.btn-text= t('.actual')
+          %span.glyphicon.glyphicon-chevron-right

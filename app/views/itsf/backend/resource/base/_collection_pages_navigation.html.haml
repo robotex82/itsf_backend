@@ -1,0 +1,10 @@
+%ul.nav.nav-tabs
+  - collection_links.each do |collection_link|
+    - if collection_link[:condition].call(self)
+      - if current_page? collection_link[:target].call(self)
+        %li.active{ role: :presentation }
+          = collection_link[:link_to].call(self)
+      - else
+        %li{ role: :presentation }
+          = collection_link[:link_to].call(self)
+  = render 'additional_collection_tabs', collection: collection

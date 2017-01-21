@@ -13,6 +13,7 @@ module Itsf::Backend
     include Controller::ServiceUrlsConcern
     include Controller::ServiceActionsConcern
     include Controller::JsonApiConcern
+    include Controller::FeatureFlagsConcern
     helper Itsf::Backend::ApplicationHelper
 
     layout 'itsf/backend/base'

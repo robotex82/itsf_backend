@@ -1,6 +1,7 @@
 module Itsf::Backend
   class HomeController < Configuration.home_base_controller.constantize
     helper Itsf::Backend::ApplicationHelper
+    helper Itsf::Backend::BootstrapHelper
     helper MultiClientHelper if Itsf::Backend.features?(:multi_client)
 
     def index

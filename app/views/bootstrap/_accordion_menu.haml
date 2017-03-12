@@ -1,0 +1,10 @@
+.accordion-menu.panel-group{ id: "accordion-menu-#{identifier}" }
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title
+        %a{"data-parent" => "#accordion-menu-#{identifier}", "data-toggle" => "collapse", href: "#accordion-menu-collapse-#{identifier}" }
+          %span{ class: "glyphicon.glyphicon-#{icon}" }
+          = title
+    .panel-collapse.collapse.in{ id: "accordion-menu-collapse-#{identifier}" }
+      %table.table.table-striped.table-hover.table-condensed
+        = items

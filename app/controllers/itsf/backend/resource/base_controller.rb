@@ -21,6 +21,7 @@ module Itsf::Backend
     include Controller::ResourceLinksConcern
     include Controller::CollectionLinksConcern
     helper Itsf::Backend::ApplicationHelper
+    helper Itsf::Backend::BootstrapHelper
     helper MultiClientHelper if Itsf::Backend.features?(:multi_client)
     
     helper_method :resource_class

@@ -15,6 +15,7 @@ module Itsf::Backend
     include Controller::JsonApiConcern
     include Controller::FeatureFlagsConcern
     helper Itsf::Backend::ApplicationHelper
+    helper Itsf::Backend::BootstrapHelper
 
     layout 'itsf/backend/base'
 

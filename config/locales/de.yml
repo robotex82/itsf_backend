@@ -107,6 +107,8 @@ de:
   layouts:
     itsf:
       backend:
+        auxiliary_navigation:
+          title: "%{application_name}"
         base:
           title: "%{application_name}"
         main_navigation:

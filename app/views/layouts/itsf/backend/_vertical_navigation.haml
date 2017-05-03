@@ -1,10 +1,10 @@
 - Itsf::Backend::Configuration.backend_engines.each do |engine|
   - if !respond_to?(:engine_policy) || engine_policy(engine).access?
     = accordion_menu(identifier: engine.name.parameterize, title: t("classes.#{engine.name.underscore}"), icon: 'menu-down') do |menu|
-      = menu.item(icon: 'home', target: send(engine.engine_name).root_path, title: t(".home"))
+      = menu.item(icon: 'home', target: send("#{engine.engine_name}_#{I18n.locale}").root_path, title: t(".home"))
       - controllers = engine.to_s.gsub('::Engine', '::Configuration').constantize.registered_controllers.call
       - controllers.each do |kontroller|  
         - resource_klass = kontroller.resource_class
         - if !Itsf::Backend.features?(:pundit) || policy(resource_klass).index?
           - resource_count = kontroller.resource_count.respond_to?(:call) ? instance_exec(&kontroller.resource_count) : kontroller.resource_count
-          = menu.item(icon: 'list', target: send(engine.engine_name).url_for(controller: "/#{kontroller.controller_path}"), title: resource_klass.model_name.human(count: :other), item_count: resource_count)
+          = menu.item(icon: 'list', target: send("#{engine.engine_name}_#{I18n.locale}").url_for(controller: "/#{kontroller.controller_path}"), title: resource_klass.model_name.human(count: :other), item_count: resource_count)

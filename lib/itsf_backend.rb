@@ -1,4 +1,3 @@
-require 'ace-rails-ap'
 require 'coffee-rails'
 require 'cocoon'
 require 'kaminari'

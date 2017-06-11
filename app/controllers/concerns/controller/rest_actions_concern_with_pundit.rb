@@ -62,7 +62,7 @@ module Controller
     private
 
     def after_create_location
-      collection_path
+      @resource
     end
 
     def after_destroy_location
@@ -70,7 +70,7 @@ module Controller
     end
 
     def after_update_location
-      collection_path
+      @resource
     end
 
     def authorize_action
@@ -91,21 +91,49 @@ module Controller
       final_scope
     end
 
-    def collection_scope
-      resource_class
-    end
-
-    def initialize_resource
-      resource_class.new
-    end
-
-    def load_resource
-      resource_class.find(params[:id])
-    end
-
     def search_scopes
       return [] unless params.key?(:q) && params[:q].key?(:scopes)
       params[:q][:scopes].keys - ['unscoped']
+    end
+
+    def base_scope
+      resource_class
+    end
+
+    def after_create_location
+      collection_path
+    end
+
+    def after_destroy_location
+      collection_path
+    end
+
+    def after_update_location
+      collection_path
+    end
+
+    def collection_scope
+      base_scope
+    end
+
+    def initialize_scope
+      base_scope
+    end
+
+    def initialize_resource
+      initialize_scope.new
+    end
+
+    def load_collection
+      collection_scope.all
+    end
+
+    def load_scope
+      base_scope
+    end
+
+    def load_resource
+      load_scope.find(params[:id])
     end
   end
 end

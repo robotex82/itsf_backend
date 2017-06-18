@@ -1,11 +1,9 @@
 module Controller
   module PaginationConcern
-    extend ActiveSupport::Concern
-
     private
 
     def load_collection
-      collection_scope.page(params[:page]).per(pagination_size)
+      super.page(params[:page]).per(pagination_size)
     end
 
     def pagination_size

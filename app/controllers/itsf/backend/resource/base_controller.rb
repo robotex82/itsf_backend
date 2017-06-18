@@ -14,8 +14,8 @@ module Itsf::Backend
     end
     include Controller::ResourceUrlsConcern
     include Controller::ResourceInflectionsConcern
-    include Controller::RansackConcern if Itsf::Backend.features?(:ransack)
-    include Controller::PaginationConcern if Itsf::Backend.features?(:kaminari)
+    prepend Controller::RansackConcern if Itsf::Backend.features?(:ransack)
+    prepend Controller::PaginationConcern if Itsf::Backend.features?(:kaminari)
     include Controller::JsonApiConcern
     include Controller::FeatureFlagsConcern
     include Controller::ResourceLinksConcern

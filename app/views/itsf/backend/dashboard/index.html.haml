@@ -1,5 +1,6 @@
 #page-title.bottom-margin-1
-  %h3= t('.title', engine_name: t(controller.class.name.deconstantize.underscore.gsub('/', '_')))
+  .col-lg-12
+    %h3= t('.title')
 
 - Itsf::Backend::Configuration.backend_engines.each do |engine|
   - if !Itsf::Backend.features?(:pundit) || engine_policy(engine).access?

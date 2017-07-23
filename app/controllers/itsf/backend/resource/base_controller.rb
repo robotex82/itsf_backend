@@ -45,14 +45,14 @@ module Itsf::Backend
     private
 
     def after_create_location
-      return edit_resource_path(@resource) if params.has_key?(:commit_and_continue_with_edit)
-      return new_resource_path if params.has_key?(:commit_and_continue_with_new)
+      return edit_resource_path(@resource) if params.has_key?(:commit_and_continue_with_edit) && @resource.persisted?
+      return new_resource_path if params.has_key?(:commit_and_continue_with_new) && @resource.persisted?
       @resource
     end
 
     def after_update_location
-      return edit_resource_path(@resource) if params.has_key?(:commit_and_continue_with_edit)
-      return new_resource_path if params.has_key?(:commit_and_continue_with_new)
+      return edit_resource_path(@resource) if params.has_key?(:commit_and_continue_with_edit) && !@resource.changed?
+      return new_resource_path if params.has_key?(:commit_and_continue_with_new) && !@resource.changed?
       @resource
     end
   end

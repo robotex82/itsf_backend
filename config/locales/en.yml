@@ -62,7 +62,7 @@ en:
         dashboard_panel:
           view: 'Show'
         index:
-          title: "Welcome to the %{engine_name}-Module"
+          title: "Welcome to the Backend"
       resource:
         base:
           edit:
@@ -102,7 +102,14 @@ en:
   layouts:
     itsf:
       backend:
+        auxiliary_navigation:
+          title: "%{application_name}"
+        base:
+          title: "%{application_name}"
         main_navigation:
+          title: "%{application_name}"
+        vertical_navigation:
+          home: "Home"
           title: "%{application_name}"
   locales:
     en: English

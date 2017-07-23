@@ -65,7 +65,7 @@ de:
         dashboard_panel:
           view: 'Anzeigen'
         index:
-          title: "Willkommen im Modul für %{engine_name}"
+          title: "Willkommen im Backend"
       resource:
         base:
           edit:

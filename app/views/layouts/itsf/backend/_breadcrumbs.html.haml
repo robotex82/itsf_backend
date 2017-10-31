@@ -1,0 +1,3 @@
+%ol.breadcrumb
+  - breadcrumbs.each do |b|
+    %li{ b[:li_html_options] }= link_to(b[:label], b[:url], b[:link_html_options])

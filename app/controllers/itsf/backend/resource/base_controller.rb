@@ -20,6 +20,8 @@ module Itsf::Backend
     include Controller::FeatureFlagsConcern
     include Controller::ResourceLinksConcern
     include Controller::CollectionLinksConcern
+    include Controller::CurrentEngineConcern
+    include Controller::BreadcrumbsConcern
     helper Itsf::Backend::ApplicationHelper
     helper Itsf::Backend::BootstrapHelper
     helper MultiClientHelper if Itsf::Backend.features?(:multi_client)

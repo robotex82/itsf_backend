@@ -7,6 +7,8 @@ en:
   acts_as_list:
     inserted_after: "Inserted %{inserted_resource} after %{target_resource}"
     inserted_before: "Inserted %{inserted_resource} before %{target_resource}"
+  awesome_nested_set:
+    inserted_after: "Inserted %{inserted_resource} after %{target_resource}"
   attributes:
     actions: 'Actions'
     acts_as_list_actions: 'List'
@@ -22,6 +24,16 @@ en:
       remove: "Remove"
   confirmations:
     delete: "Are you sure?"
+  controller:
+    breadcrumbs_concern:
+      call: 'Execute'
+      create: 'New'
+      edit: 'Edit'
+      home: 'Backend'
+      invoke: 'Exectute'
+      new: 'New'
+      page: 'Page %{page_number'
+      update: 'Edit'
   classes:
     i18n: 'Language'
   flash:

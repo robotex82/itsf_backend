@@ -14,6 +14,9 @@ module Itsf::Backend
     include Controller::ServiceActionsConcern
     include Controller::JsonApiConcern
     include Controller::FeatureFlagsConcern
+    include Controller::CurrentEngineConcern
+    include Controller::BreadcrumbsConcern
+    
     helper Itsf::Backend::ApplicationHelper
     helper Itsf::Backend::BootstrapHelper
 

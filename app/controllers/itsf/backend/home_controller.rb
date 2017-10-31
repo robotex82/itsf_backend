@@ -3,6 +3,8 @@ module Itsf::Backend
     helper Itsf::Backend::ApplicationHelper
     helper Itsf::Backend::BootstrapHelper
     helper MultiClientHelper if Itsf::Backend.features?(:multi_client)
+    include Controller::CurrentEngineConcern
+    include Controller::BreadcrumbsConcern
 
     def index
     end

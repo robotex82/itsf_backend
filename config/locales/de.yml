@@ -24,6 +24,16 @@ de:
       remove: "Entfernen"
   confirmations:
     delete: "Sind Sie sicher?"
+  controller:
+    breadcrumbs_concern:
+      call: 'Ausführen'
+      create: 'Anlegen'
+      edit: 'Bearbeiten'
+      update: 'Bearbeiten'
+      home: 'Backend'
+      invoke: 'Ausführen'
+      new: 'Anlegen'
+      page: 'Seite %{page_number'
   classes:
     i18n: 'Sprache'
   flash:

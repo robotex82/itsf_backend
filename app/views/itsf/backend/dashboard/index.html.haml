@@ -1,7 +1,9 @@
-#page-title.bottom-margin-1
+.row
   .col-lg-12
-    %h3= t('.title')
+    #page-title.bottom-margin-1
+      %h1= t('.title')
 
-- Itsf::Backend::Configuration.backend_engines.each do |engine|
-  - if !Itsf::Backend.features?(:pundit) || engine_policy(engine).access?
-    .col-lg-6= render 'dashboard_panel', engine: engine
+.row
+  - Itsf::Backend::Configuration.backend_engines.each do |engine|
+    - if !Itsf::Backend.features?(:pundit) || engine_policy(engine).access?
+      .col-lg-6= render 'dashboard_panel', engine: engine

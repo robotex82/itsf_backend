@@ -33,7 +33,7 @@ de:
       home: 'Backend'
       invoke: 'Ausführen'
       new: 'Anlegen'
-      page: 'Seite %{page_number'
+      page: 'Seite %{page_number}'
   classes:
     i18n: 'Sprache'
   flash:

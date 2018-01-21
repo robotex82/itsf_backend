@@ -21,8 +21,9 @@ module Controller
         if respond_to?(:resource_class, true)
           breadcrumbs << { label: resource_class.model_name.human(count: :other), url: url_for(action: :index), link_html_options: {}, li_html_options: {} }
         end
+
         if @resource.present? && @resource.persisted?
-          breadcrumbs << { label: @resource.try_all(*Itsf::Backend.resource_title_methods), url: url_for(@resource), link_html_options: {}, li_html_options: {} }
+          breadcrumbs << { label: @resource.try_all(*Itsf::Backend.resource_title_methods), url: url_for(action: :show, id: @resource.to_param), link_html_options: {}, li_html_options: {} }
         end
         
         if respond_to?(:service_class, true)

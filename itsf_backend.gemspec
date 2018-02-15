@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'pundit'
   s.add_dependency 'route_translator'
   s.add_dependency 'rails-i18n'
-  s.add_dependency 'rails_rad'
+  s.add_dependency 'rails-add_ons'
   s.add_dependency 'ransack'
   s.add_dependency 'responders'
   s.add_dependency 'resource_renderer'

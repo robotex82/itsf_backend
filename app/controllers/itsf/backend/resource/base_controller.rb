@@ -1,32 +1,38 @@
-require 'ransack' if Itsf::Backend.features?(:ransack)
-require 'kaminari' if Itsf::Backend.features?(:kaminari)
-
 module Itsf::Backend
   class Resource::BaseController < Configuration.resource_base_controller.constantize
-    if Itsf::Backend.features?(:pundit)
-      include Controller::RestActionsConcernWithPundit
-      include Pundit
-      prepend Controller::PunditNamespacedAuthorizeConcern
-      include Controller::PunditAuthorizationFailureHandlingConcern
-      helper_method :engine_policy
-    else
-      include Controller::RestActionsConcern
-    end
-    include Controller::ResourceUrlsConcern
-    include Controller::ResourceInflectionsConcern
-    prepend Controller::RansackConcern if Itsf::Backend.features?(:ransack)
-    prepend Controller::PaginationConcern if Itsf::Backend.features?(:kaminari)
-    include Controller::JsonApiConcern
+    # if Itsf::Backend.features?(:pundit)
+    #   include Controller::RestActionsConcernWithPundit
+    #   include Pundit
+    #   prepend Controller::PunditNamespacedAuthorizeConcern
+    #   include Controller::PunditAuthorizationFailureHandlingConcern
+    #   helper_method :engine_policy
+    # else
+    #   include Controller::RestActionsConcern
+    # end
+    # include Controller::ResourceUrlsConcern
+    # include Controller::ResourceInflectionsConcern
+    # prepend Controller::RansackConcern if Itsf::Backend.features?(:ransack)
+    # prepend Controller::PaginationConcern if Itsf::Backend.features?(:kaminari)
+    # include Controller::JsonApiConcern
     include Controller::FeatureFlagsConcern
     include Controller::ResourceLinksConcern
     include Controller::CollectionLinksConcern
-    include Controller::CurrentEngineConcern
+    # include Controller::CurrentEngineConcern
     include Controller::BreadcrumbsConcern
     helper Itsf::Backend::ApplicationHelper
     helper Itsf::Backend::BootstrapHelper
-    helper MultiClientHelper if Itsf::Backend.features?(:multi_client)
+    # helper MultiClientHelper if Itsf::Backend.features?(:multi_client)
     
-    helper_method :resource_class
+    # helper_method :resource_class
+
+    include ResourcesController::Resources
+    include ResourcesController::ResourceInflections
+    include ResourcesController::RestResourceUrls
+    include ResourcesController::RestActions
+    include ResourcesController::LocationHistory
+    include ResourcesController::Sorting
+    include ResourcesController::Kaminari if Itsf::Backend.features?(:kaminari)
+    include ResourcesController::WillPaginate if Itsf::Backend.features?(:will_paginate)
 
     helper ResourceRenderer::ViewHelper
 

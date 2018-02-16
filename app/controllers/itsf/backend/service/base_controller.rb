@@ -9,10 +9,12 @@ module Itsf::Backend
       include Controller::PunditAuthorizationFailureHandlingConcern
     end
 
-    include Controller::ServiceInflectionsConcern
-    include Controller::ServiceUrlsConcern
-    include Controller::ServiceActionsConcern
-    include Controller::JsonApiConcern
+    include ServiceController::Service
+    include ServiceController::ServiceInflections
+    include ServiceController::RestServiceUrls
+    include ServiceController::RestActions
+    include ServiceController::LocationHistory
+    # include Controller::JsonApiConcern
     include Controller::FeatureFlagsConcern
     include Controller::CurrentEngineConcern
     include Controller::BreadcrumbsConcern
@@ -21,15 +23,5 @@ module Itsf::Backend
     helper Itsf::Backend::BootstrapHelper
 
     layout 'itsf/backend/base'
-
-    helper_method :service_class
-
-    def self.service_class
-      name.gsub('Controller', '').constantize
-    end
-
-    def service_class
-      self.class.service_class
-    end
   end
 end

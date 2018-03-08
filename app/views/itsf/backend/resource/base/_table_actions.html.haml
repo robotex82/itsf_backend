@@ -1,21 +1,22 @@
 = table.column(:actions) do |resource|
-  - id_base = "link-to-#{controller.class.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-#{resource.to_param}"
-  .btn-group
-    - if !features?(:pundit) || policy(resource).show?
-      - begin
-        = link_to(resource_path(resource), id: "#{id_base}-show", class: 'btn btn-xs btn-responsive btn-default') do
-          %span.glyphicon.glyphicon-eye-open
-          %span.btn-text= t('.show')
-      - rescue ActionController::UrlGenerationError
-    - if !features?(:pundit) || policy(resource).edit?
-      - begin
-        = link_to(edit_resource_path(resource), id: "#{id_base}-edit", class: 'btn btn-xs btn-responsive btn-default') do
-          %span.glyphicon.glyphicon-pencil
-          %span.btn-text= t('.edit')
-      - rescue ActionController::UrlGenerationError
-    - if !features?(:pundit) || policy(resource).destroy?
-      - begin
-        = link_to(resource_path(resource), id: "#{id_base}-destroy", class: 'btn btn-xs btn-responsive btn-danger', method: :delete, data: { confirm: I18n.t('.confirmations.delete') }) do
-          %span.glyphicon.glyphicon-fire
-          %span.btn-text= t('.destroy')
-      - rescue ActionController::UrlGenerationError
+  - capture_haml do
+    - id_base = "link-to-#{controller.class.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-#{resource.to_param}"
+    .btn-group
+      - if !features?(:pundit) || policy(resource).show?
+        - begin
+          = link_to(resource_path(resource), id: "#{id_base}-show", class: 'btn btn-xs btn-responsive btn-default') do
+            %span.glyphicon.glyphicon-eye-open
+            %span.btn-text= t('.show')
+        - rescue ActionController::UrlGenerationError
+      - if !features?(:pundit) || policy(resource).edit?
+        - begin
+          = link_to(edit_resource_path(resource), id: "#{id_base}-edit", class: 'btn btn-xs btn-responsive btn-default') do
+            %span.glyphicon.glyphicon-pencil
+            %span.btn-text= t('.edit')
+        - rescue ActionController::UrlGenerationError
+      - if !features?(:pundit) || policy(resource).destroy?
+        - begin
+          = link_to(resource_path(resource), id: "#{id_base}-destroy", class: 'btn btn-xs btn-responsive btn-danger', method: :delete, data: { confirm: I18n.t('.confirmations.delete') }) do
+            %span.glyphicon.glyphicon-fire
+            %span.btn-text= t('.destroy')
+        - rescue ActionController::UrlGenerationError

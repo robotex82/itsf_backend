@@ -16,7 +16,7 @@
 
 .panel.panel-default.panel-with-actions
   %table.table.table-striped.table-condensed.table-hover
-    = render_resource(@resource, as: :bootstrap_attribute_table) do |table|
+    = resource_table(resource: @resource) do |table|
       = render 'show', table: table
 
   .panel-footer

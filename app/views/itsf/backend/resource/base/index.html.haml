@@ -42,7 +42,7 @@
   .table-responsive
     - table_classes = %w(table table-responsive table-condensed table-striped table-hover)
     - table_classes << 'dragtable' if features?(:dragtable)
-    = render_collection(@collection, resource_class, as: :bootstrap_table, table_html_options: { class: table_classes.join(" ") }) do |table|
+    = collection_table(collection: @collection, resource_class: resource_class) do |table|
       = render 'table', table: table
       = render 'table_actions', table: table
 

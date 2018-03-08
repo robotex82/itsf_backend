@@ -30,11 +30,12 @@ module Itsf::Backend
     include ResourcesController::RestResourceUrls
     include ResourcesController::RestActions
     include ResourcesController::LocationHistory
-    include ResourcesController::Sorting
     include ResourcesController::Kaminari if Itsf::Backend.features?(:kaminari)
     include ResourcesController::WillPaginate if Itsf::Backend.features?(:will_paginate)
 
     helper ResourceRenderer::ViewHelper
+    helper Rails::AddOns::TableHelper
+    helper Twitter::Bootstrap::Components::Rails::V3::ComponentsHelper
 
     layout 'itsf/backend/base'
 
@@ -55,13 +56,17 @@ module Itsf::Backend
     def after_create_location
       return edit_resource_path(@resource) if params.has_key?(:commit_and_continue_with_edit) && @resource.persisted?
       return new_resource_path if params.has_key?(:commit_and_continue_with_new) && @resource.persisted?
-      @resource
+      resource_path(@resource)
     end
 
     def after_update_location
       return edit_resource_path(@resource) if params.has_key?(:commit_and_continue_with_edit) && !@resource.changed?
       return new_resource_path if params.has_key?(:commit_and_continue_with_new) && !@resource.changed?
-      @resource
+      resource_path(@resource)
+    end
+
+    def after_destroy_location
+      collection_path
     end
   end
 end

@@ -4,11 +4,6 @@ de:
       all: Alle
       published: Veröffentlicht
       unpublished: Unveröffentlicht
-  acts_as_list:
-    inserted_after: "%{inserted_resource} nach %{target_resource} eingefügt"
-    inserted_before: "%{inserted_resource} vor %{target_resource} eingefügt"
-  awesome_nested_set:
-    inserted_after: "%{inserted_resource} nach %{target_resource} eingefügt"
   attributes:
     actions: 'Aktionen'
     acts_as_list_actions: 'Liste'

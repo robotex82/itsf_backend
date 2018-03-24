@@ -21,14 +21,17 @@ de:
     delete: "Sind Sie sicher?"
   controller:
     breadcrumbs_concern:
-      call: 'Ausführen'
-      create: 'Anlegen'
-      edit: 'Bearbeiten'
-      update: 'Bearbeiten'
       home: 'Backend'
-      invoke: 'Ausführen'
-      new: 'Anlegen'
       page: 'Seite %{page_number}'
+      actions:
+        default:
+          create: 'Anlegen'
+          edit: 'Bearbeiten'
+          update: 'Bearbeiten'
+          new: 'Anlegen'
+        service:
+          new: 'Ausführen'
+          create: 'Ausführen'
   classes:
     i18n: 'Sprache'
   flash:
@@ -47,7 +50,6 @@ de:
           notice: "%{resource_name} zurückgezogen."
   helpers:
     submit:
-      call: "%{model} ausführen"
       create_and_continue_with_edit: "%{resource_name} erstellen und weiter bearbeiten"
       create_and_continue_with_new: "%{resource_name} erstellen und neu"
       update_and_continue_with_edit: "%{resource_name} aktualisieren und weiter bearbeiten"
@@ -63,6 +65,8 @@ de:
           resources: 'Resourcen'
           services: 'Dienste'
           view: 'Anzeigen'
+          service:
+            new: 'Ausführen'
         index:
           back: "Zurück"
           title: "Willkommen im Modul für %{engine_name}"
@@ -99,7 +103,8 @@ de:
             title: "Aktionen"
       service:
         base:
-          index:
+          submit: '%{model} ausführen'
+          new:
             back: 'Zurück'
             invoke: "Ausführen"
             title: "%{service_name} ausführen"

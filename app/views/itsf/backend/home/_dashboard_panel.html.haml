@@ -42,4 +42,4 @@
             .btn-group
               = link_to({ controller: kontroller.name.underscore.gsub('_controller', ''), action: 'new' }, { id: "link-to-#{kontroller.name.underscore.gsub('_controller', '').gsub(/[\/_]/, '-')}-invoke", class: 'btn btn-success btn-xs btn-responsive' }) do
                 %span.glyphicon.glyphicon-play-circle
-                %span.btn-text= t('.new')
+                %span.btn-text= t('.service.new')

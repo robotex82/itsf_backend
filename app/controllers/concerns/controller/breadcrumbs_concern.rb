@@ -27,15 +27,17 @@ module Controller
         end
 
         if respond_to?(:service_class, true)
-          breadcrumbs << t("classes.#{service_class.name.underscore}")
+          breadcrumbs << service_class.model_name.human
         end
 
+        action_namespace = respond_to?(:service_class, true) ? :service : :default
+
         if %w(new edit).include?(action_name)
-          breadcrumbs << { label: t("controller.breadcrumbs_concern.#{action_name}"), url: { action: action_name }, link_html_options: {}, li_html_options: {} }
+          breadcrumbs << { label: t("controller.breadcrumbs_concern.actions.#{action_namespace}.#{action_name}"), url: { action: action_name }, link_html_options: {}, li_html_options: {} }
         end
 
         if %w(create update).include?(action_name)
-          breadcrumbs << { label: t("controller.breadcrumbs_concern.#{action_name}"), url: '#', link_html_options: {}, li_html_options: {} }
+          breadcrumbs << { label: t("controller.breadcrumbs_concern.actions.#{action_namespace}.#{action_name}"), url: '#', link_html_options: {}, li_html_options: {} }
         end
 
         if params[:page].present?

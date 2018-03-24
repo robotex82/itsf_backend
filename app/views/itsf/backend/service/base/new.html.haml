@@ -3,14 +3,14 @@
     %h1= t('.title', inflections)
 
   %div.panel-body
-    = simple_form_for(@service, url: call_service_path) do |f|
-      = render partial: 'form_errors', locals: { response: @response || f.object }
+    = simple_form_for(@service, url: create_service_path) do |f|
+      = render partial: 'form_errors', locals: { result: @result || f.object }
       = render 'form', form: f
       = f.button :submit, t("helpers.submit.call", model: f.object.class.model_name.human), class: 'btn btn-success'
 
   %div.panel-footer
 .well.well-sm
   .btn-container-right
-    = link_to collection_path, class: 'btn btn-default btn-responsive' do
+    = link_to root_path, class: 'btn btn-default btn-responsive' do
       %span.glyphicon.glyphicon-arrow-left
       %span.btn-text= t('.back')

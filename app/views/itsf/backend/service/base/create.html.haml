@@ -3,14 +3,14 @@
     %h1= t('.title', inflections)
 
   %div.panel-body
-    = render partial: 'messages', locals: { messages: @response.messages }
+    = render partial: 'messages', locals: { messages: @result.messages }
 
   %div.panel-footer
 
-= render 'success_extras', service_response: @response
+= render 'create_extras', result: @result
 
 .well.well-sm
   .btn-container-right
-    = link_to collection_path, class: 'btn btn-default btn-responsive' do
+    = link_to new_service_path, class: 'btn btn-default btn-responsive' do
       %span.glyphicon.glyphicon-arrow-left
       %span.btn-text= t('.back')

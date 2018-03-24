@@ -102,11 +102,8 @@ de:
           index:
             back: 'Zurück'
             invoke: "Ausführen"
-            title: "%{service_name}"
-          invoke:
-            back: 'Zurück'
             title: "%{service_name} ausführen"
-          success:
+          create:
             back: 'Zurück'
             title: "%{service_name} ausgeführt"
   layouts:

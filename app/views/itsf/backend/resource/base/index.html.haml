@@ -17,6 +17,9 @@
 #collection-pages-naviation.bottom-margin-1
   = render 'collection_pages_navigation', collection: @collection
 
+#before-index-table.bottom-margin-1
+  = render 'before_index_table', collection: @collection
+
 .panel.panel-default.panel-with-actions
   .panel-heading
     .pull-right.form-inline
@@ -38,7 +41,7 @@
               = link_to t('ransack.reset'), {},class: 'btn btn-danger'
             - else
               = f.submit
-              
+
   .table-responsive
     - table_classes = %w(table table-responsive table-condensed table-striped table-hover)
     - table_classes << 'dragtable' if features?(:dragtable)

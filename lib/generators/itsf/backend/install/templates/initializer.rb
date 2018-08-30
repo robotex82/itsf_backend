@@ -6,6 +6,12 @@ Itsf::Backend.configure do |config|
   # Default: config.enabled_features: []
   #
   config.enabled_features = [:kaminari]
+
+  # Set the base controller the application controller
+  #
+  # Default: config.application_base_controller = 'BackendController'
+  #
+  config.application_base_controller = 'BackendController'
   
   # Set the base controller the backend dashboards
   #

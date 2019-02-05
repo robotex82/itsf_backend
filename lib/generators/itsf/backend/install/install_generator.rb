@@ -17,6 +17,10 @@ module Itsf
         def generate_controller
           copy_file 'backend_controller.rb', 'app/controllers/backend_controller.rb'
         end
+        
+        def generate_route_translator_initializer
+          copy_file 'route_translator.rb', 'config/route_translator.rb'
+        end
       end
     end
   end
